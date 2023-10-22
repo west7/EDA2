@@ -1,0 +1,101 @@
+Arvore 2-3
+-completamente balanceada (altura h = log n)
+-nós simples, nós duplos e nós triplos
+-sempre que surge um nó triplo, ele é quebrado e 
+o elemento do meio se torna a raiz e agrupa os elementos a esquerda(menor) e a direita(maior)
+-não admite chaves repetidas (tabela de símbolos)
+-difícil implementação
+-todas operações são logarítimicas
+
+Arvore Red-Black (LLD - Red Black)
+-implementação de uma arvore 2-3
+
+
+typedef struct NodeRedBlack{
+    int data;
+    NodeRedBlack *esp, *dir;
+    bool red;
+}NodeRedBlack;
+
+bool isRed(NodeRedBlack *n){
+    if(n == NULL) return false;
+
+    if(n->red) return true;
+
+    return false;
+}
+
+void flipColors(NodeRedBlack *r){
+    r->esp->red = false;
+    r->dir->red = false;
+    r->red = true;
+}
+
+NodeRedBlack *rotateLeft(NodeRedBlack *r){
+
+    NodeRedBlack *nr = r->dir;  //Novo no recebr a direita da raiz
+    r->dir = nr->esq;   //A direita da raiz recebe a arvore à esquerda da nova raiz
+    nr->esq = r;    //A esquerda da nova raiz recebe a raiz antiga
+    nr->red = r->red;
+    r->red = true;
+
+    return nr;
+}
+
+NodeRedBlack *rotateRight(NodeRedBlack *r){
+
+    NodeRedBlack *nr = r->esq;  //Novo no recebe a esquerda da raiz
+    r->esq = nr->dir;   //A esquerda da raiz recebe a arvore à direita da nova raiz
+    nr->dir = r;    //A direita da nova raiz recebe a raiz antiga
+    nr->red = r->red;
+    r->red = true;
+
+    return nr;
+}
+
+NodeRedBlack *newNodeRB(bool red, NodeRedBlack *esq, NodeRedBlack *dir, int data){
+    NodeRedBlack *nv = malloc(sizeof(NodeRedBlack));
+    nv->red = red;
+    nv->esq = esq;
+    nv->dir = dir;
+    nv->data = data;
+
+    return nv;
+}
+
+NodeRedBlack* insertRB (NodeRedBlack *r, int data){
+
+    if(r == NULL) return newNodeRB(true, NULL, NULL, data);
+
+    //Inserção normal de Arvore Binaria
+    if(less(data, r->data)){
+        r->esq = insertRB(r->esq, data);
+    }else if(less(r->data, data)){
+        r->dir = insertRB(r->dir, data);
+    }else{
+        r->data = data;
+    }
+
+    //Verificações da Red Black
+    if(!isRed(r->esq) && isRed(r->dir)){
+        r = rotateLeft(r);
+    }
+    if(isRed(r->esq) && isRed(r->esq->esq)){
+        r = rotateRight(r);
+    }
+    if(isRed(r->esq) && isRed(dir)) {
+        flipColors(r);
+    }
+}
+
+NodeRedBlack *BSTsearch(NodeRedBlack *r, int key){
+    if(r == NULL) return NULL;
+
+    if(less(key, r->data)){
+        return BSTsearch(r->esq, key);
+    }else if(less(r->data, key)){
+        return BSTsearch(r->dir, key);
+    }else{
+        return r; 
+    }
+}
