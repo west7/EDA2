@@ -6,7 +6,6 @@
 typedef struct Contagem{
     char c;
     int cont;
-
 }Contagem;
 
 int comparar(const void *a, const void *b)
