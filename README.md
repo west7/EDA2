@@ -187,7 +187,78 @@ Os nós podem ser do tipo acima. Todo novo nó inserido é inserido com vermelho
         h->right->red = !h->right->red;
     }
 ```
+### 2.4 Inserções em Árvore Red Black
 
+- Exemplo de inserção em uma RedBlack com a seguinte sequência: 10, 15, 5, 3, 2, 20, 25, 30, 20.
+
+
+```mermaid
+graph TD;
+
+    subgraph I1[Inserção do 10]
+    A(10) --> B(NULL) & C(NULL)
+    end
+
+    subgraph I2[Inserção do 15]
+    A2(10) --> B2(NULL) & C2(15)
+    end
+
+    subgraph I3[rotateLeft]
+    A3(15) --> C3(10) & B3(NULL)
+    end
+    
+    subgraph I4[Inserção do 5]
+    A4(15)--> B4(10) --> C4(5)
+    A4(15) --> D4(NULL)
+    B4(10) --> E4(NULL)
+    end
+
+    subgraph I5[rotateRight]
+    A5(10) --> B5(5) & C5(15)
+    end
+
+    subgraph I6[flipColors]
+    A6(10) --> B6(5) & C6(15)
+    end
+
+    subgraph I7[Final Tree]
+    a7(10) --> b7(3) & c7(20)
+    b7(3) --> d7(2) & e7(5)
+    c7(20) --> f7(15) & g7(30)
+    g7(30) --> h7(25)
+    end
+
+    classDef myNodeStyle fill:#000000,stroke-width:1px;
+
+    class A,B,C,A2,B2,A3,B3,A4,C4,D4,E4,A5,B6,C6,a7,b7,c7,d7,e7,f7,g7 myNodeStyle;
+
+    style C2 fill: #FF272A
+    style C3 fill: #FF272A
+    style B4 fill: #FF272A
+    style C4 fill: #FF272A
+    style B5 fill: #FF272A
+    style C5 fill: #FF272A
+    style A6 fill: #FF272A
+    style h7 fill: #FF272A
+    style ... fill: #351D59	
+    style START fill: #351D59
+    style END fill: #351D59	
+
+    style I1 fill: #FFFFFF00, stroke:#333, stroke-width: 1px;
+    style I2 fill: #FFFFFF00, stroke:#333, stroke-width: 1px;
+    style I3 fill: #FFFFFF00, stroke:#333, stroke-width: 1px;
+    style I4 fill: #FFFFFF00, stroke:#333, stroke-width: 1px;
+    style I5 fill: #FFFFFF00, stroke:#333, stroke-width: 1px;
+    style I6 fill: #FFFFFF00, stroke:#333, stroke-width: 1px;
+    style I7 fill: #FFFFFF00, stroke:#333, stroke-width: 1px;
+
+    START --> I1
+    I1 --> I2 --> I3 
+    I4 --> I5 --> I6 --> ...
+    END --> I7 
+```
+
+- No exemplo é possível visualizar todos os os casos em que alguma das regras é quebrada, e como é o comportamento das respectivas funções de "correção" da árvore, além do formato final da árvore após todas as inserções.
 
 # Heap
 A Fila de Prioridades ou Heap,
