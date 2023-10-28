@@ -1,4 +1,5 @@
-# EDA2 ❗
+# Estrutura de Dados e Algoritmos 2
+
 Este repositório é dedicado a disciplina de 'Estrutura de dados e algoritmos 2' da Universidade de Brasília. Tem como objetivo documentar as [Listas de Exercícios](#listas-de-exercícios) resolvidas ao decorrer da disciplina, bem como a [Apostila](#apostila) dos conteúdos desenvolvidos durante o semestre. 
 
 
@@ -241,9 +242,9 @@ graph TD;
     style C5 fill: #FF272A
     style A6 fill: #FF272A
     style h7 fill: #FF272A
-    style ... fill: #351D59	
-    style START fill: #351D59
-    style END fill: #351D59	
+    style ... fill: 	
+    style START fill:
+    style END fill: 	
 
     style I1 fill: #FFFFFF00, stroke:#333, stroke-width: 1px;
     style I2 fill: #FFFFFF00, stroke:#333, stroke-width: 1px;
