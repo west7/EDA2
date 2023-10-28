@@ -159,6 +159,7 @@ Os nós podem ser do tipo acima. Todo novo nó inserido é inserido com vermelho
   2. Quando a regra <b>"2"</b> for quebrada deve ser aplicado um <b>rotateRight()</b> para rotacionar o <b> elemento pai</b> para à direita, de forma que o elemento do meio se torne o novo pai.
   3. Quando a regra <b>"3"</b> for quebrada deve ser aplicado um <b>flipColors()</b> para trocar as cores dos nós filhos com o nó pai, pintando os nós filhos de <b>preto</b> e o nó pai de <b>vermelho</b>.
 
+> **Observação:**  a cor da raiz não importa 
 ---
 
 ### 2.3 Algoritmos
@@ -230,7 +231,7 @@ graph TD;
 
     classDef myNodeStyle fill:#000000,stroke-width:1px;
 
-    class A,B,C,A2,B2,A3,B3,A4,C4,D4,E4,A5,B6,C6,a7,b7,c7,d7,e7,f7,g7 myNodeStyle;
+    class A,B,C,A2,B2,A3,B3,A4,D4,E4,A5,B6,C6,a7,b7,c7,d7,e7,f7,g7 myNodeStyle;
 
     style C2 fill: #FF272A
     style C3 fill: #FF272A
