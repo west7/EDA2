@@ -1,5 +1,7 @@
-# EDA2
+# EDA2 ❗
 Este repositório é dedicado a disciplina de 'Estrutura de dados e algoritmos 2' da Universidade de Brasília. Tem como objetivo documentar as [Listas de Exercícios](#listas-de-exercícios) resolvidas ao decorrer da disciplina, bem como a [Apostila](#apostila) dos conteúdos desenvolvidos durante o semestre. 
+
+
 
 
 # Listas de Exercícios
@@ -115,20 +117,21 @@ Cada posição da hash table seria a cabeça de uma lista encadeada. Ou seja, se
 
 ### 1.2 Bônus - Discussão sobre complexidades
 
-|   | Inserção | Remoção | Busca | Crescer |
-|---|-------------|-------------|-------------|----|
-| **Vetor não ordenado** | O(1)| O(1)| O(n) |O(n) |
-| **Vetor Ordenado** | O(n)| O(n)| O(log n)| O(n) |
-| **Lista encadeada não ordenada** | O(1) | O(n) | O(n) |Dinâmico |
-|**Lista encadeada ordenada**| O(n) | O(n) | O(n) |Dinâmico |
-|**Hash Table**|O(1) |O(1) |O(1) | O(n) |
-|**Árvores binárias**|O(log n) |O(log n) |O(log n) | Dinâmico|
+|                                  | Inserção | Remoção  | Busca    | Crescer  |
+| -------------------------------- | -------- | -------- | -------- | -------- |
+| **Vetor não ordenado**           | O(1)     | O(1)     | O(n)     | O(n)     |
+| **Vetor Ordenado**               | O(n)     | O(n)     | O(log n) | O(n)     |
+| **Lista encadeada não ordenada** | O(1)     | O(n)     | O(n)     | Dinâmico |
+| **Lista encadeada ordenada**     | O(n)     | O(n)     | O(n)     | Dinâmico |
+| **Hash Table**                   | O(1)     | O(1)     | O(1)     | O(n)     |
+| **Árvores binárias**             | O(log n) | O(log n) | O(log n) | Dinâmico |
 
 ---
 # 2. Árvore Red Black
 
 Árvores Red Black são estruturas de árvores binárias de busca modificadas, para ficarem constantemente balanceadas, evitando o problema das árvores convencionais, que dependendo da ordem de inserção podem ficar com complexidade linear (O(n)) em vez de complexidade logarítmica (O(log n)), perdendo toda a razão de usar árvores e não outras estruturas. Cada nó da árvore tem uma cor, <b>vermelha ou preta</b>, e essas cores são usadas para aplicar as regras que garantem o balanceamento da árvore.
 
+### 2.1 Structs
 ```C
 typedef struct Node{
     int data;
@@ -136,7 +139,12 @@ typedef struct Node{
     struct Node *left;
     bool red;
 }Node;
+
+typedef struct Tree{
+    Node *root;
+}Tree;
 ```
+### 2.2 Regras da RedBlack
 Os nós podem ser do tipo acima. Todo novo nó inserido é inserido com vermelho. E as seguintes regras têm de sempre ser seguidas:
 <b>
 1. Nenhum nó vermelho pode estar à direita do nó pai;
@@ -146,17 +154,37 @@ Os nós podem ser do tipo acima. Todo novo nó inserido é inserido com vermelho
 </b>
 
 ---
-- Assim que alguma das regras forem quebradas algum algoritmo deve ser chamado para resolver o problema: Quando a regra <b>"1"</b> for quebrada deve ser aplicado um <b>rotateLeft()</b> para rotacionar o nó vermelho para à esquerda. Quando a regra <b>"2"</b> for quebrada deve ser aplicado um <b>rotateRight()</b> para rotacionar o <b> elemento pai</b> para à direita, de forma que o elemento do meio se torne o novo pai. Quando a regra <b>"3"</b> for quebrada deve ser aplicado um <b>flipColors()</b> para trocar as cores dos nós filhos com o nó pai, pintando os nós filhos de <b>preto</b> e o nó pai de <b>vermelho</b>.
+- Assim que alguma das regras forem quebradas algum algoritmo deve ser chamado para resolver o problema: 
+  1. Quando a regra <b>"1"</b> for quebrada deve ser aplicado um <b>rotateLeft()</b> para rotacionar o nó vermelho para à esquerda. 
+  2. Quando a regra <b>"2"</b> for quebrada deve ser aplicado um <b>rotateRight()</b> para rotacionar o <b> elemento pai</b> para à direita, de forma que o elemento do meio se torne o novo pai.
+  3. Quando a regra <b>"3"</b> for quebrada deve ser aplicado um <b>flipColors()</b> para trocar as cores dos nós filhos com o nó pai, pintando os nós filhos de <b>preto</b> e o nó pai de <b>vermelho</b>.
 
 ---
+
+### 2.3 Algoritmos
 ```C
-    void rotateLeft(){
+    Node* rotateLeft(Node *h){
+        Node *x = h->right;
+        h->right = x->left;
+        x->left = h;
+        x->red = h->red;
+        h->red = true;
+        return x;
     }
 
-    void rotateRight(){
+    Node* rotateRight(Node *h){
+        Node *x = h->left;
+        h->left = x->right;
+        x->right = h;
+        x->red = h->red;
+        h->red = true;
+        return x;
     }
 
-    void flipColors(){
+    void flipColors(Node *h){
+        h->red = !h->red;
+        h->left->red = !h->left->red;
+        h->right->red = !h->right->red;
     }
 ```
 
