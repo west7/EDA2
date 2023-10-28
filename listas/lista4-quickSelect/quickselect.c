@@ -7,34 +7,24 @@
         v[b] = temp;     \
     }
 
-int separa(int *v, int l, int r)
-{
-    int i = l, j = r, pivo = v[l];
+int separa(int *v, int l, int r){          //left e right
+    int tam = r - l + 1;
+    int pivo = v[r];
 
-    while (1)
-    {
-        while (less(v[i], pivo))
-            i++;
-
-        while (!less(v[j], pivo))
-            j--;
-
-        if (i < j)
-        {
-            swap(v, i, j);
-        }
-        else
-        {
-            swap(v, l, j);
-            return j;
+    int j = l;
+    for(int k = l; k < r; k++){
+        if(less(v[k], pivo) || v[k] == pivo){
+            swap(v[k], v[j]);
+            j++;
         }
     }
-}
+    swap(v[j], v[r]);
+    return j;}
 
-void quickselect(int *v, int l, int r, int k)
+int quickselect(int *v, int l, int r, int k)
 {
     if (r <= l)
-        return;
+        return v[k];
 
     int i = separa(v, l, r);
 
@@ -42,4 +32,6 @@ void quickselect(int *v, int l, int r, int k)
         quickselect(v, l, i - 1, k);
     if (i < k)
         quickselect(v, i + 1, r, k);
+
+    return v[k];
 }
