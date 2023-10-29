@@ -379,12 +379,14 @@ Altura Negra refere-se à distância de um nó folha **preto** até a raiz.
 ```mermaid
 graph TD;
 subgraph I7[Final Tree]
-    style I7 fill: #FFFFFF00, stroke: #333, stroke-width: 1px;
+    style I7 fill: #FFFFFF00, stroke: #333, stroke-width: 1px, width: 800px;
     a7(10) --> b7(3)
     a7(10) --> c7(20)
-    b7(3) --> e7(5)
+    b7(3) --> z7(NULL) & e7(5)
+    e7(5) --> y7(NULL) & x7(NULL)
     c7(20) --> f7(15)
     c7(20) --> g7(30 25)
+    f7 --> w7(NULL) & u7(NULL)
     g7(30 25) --> h7(NULL)
     g7(30 25) --> i7(NULL)
     g7(30 25) --> j7(NULL)
