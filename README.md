@@ -39,7 +39,7 @@ Professor: [Bruno Ribas.](https://www.brunoribas.com.br/)
 - D : [Notas Curiosas](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-hash/notas.pdf)
 - E : [Notas](https://br.spoj.com/problems/NOTAS14.pdf)
 - F : [HashIT!](https://www.spoj.com/problems/HASHIT.pdf)
-- G : [Hash](https://br.spoj.com/problems/HASHADIQ.pdf)
+- G : [Hash](https://br.spoj.com/problems/HASHADIQ.pdf) 
 - H : [Mensagens Nlogoniences](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-hash/mensagens.pdf)
 ---
 
@@ -379,7 +379,6 @@ Altura Negra refere-se à distância de um nó folha **preto** até a raiz.
 ```mermaid
 graph TD;
 subgraph I7[Final Tree]
-    style I7 fill: #FFFFFF00, stroke: #333, stroke-width: 1px, width: 800px;
     a7(10) --> b7(3)
     a7(10) --> c7(20)
     b7(3) --> z7(NULL) & e7(5)
@@ -392,10 +391,22 @@ subgraph I7[Final Tree]
     g7(30 25) --> j7(NULL)
 end
 
+    style I7 fill: #FFFFFF00, stroke: #333, stroke-width: 1px, width: 800px;
 ```
 
 # Fila de Prioridades
-A Fila de Prioridades ou Heap, é uma estrutura que organiza os elementos com base em um valor que é definido como prioridade. Dispondo os elementos tal que, o de maior prioridade sempre estará no topo da fila. Ela é representada como uma árvore binária em vetor
+A Fila de Prioridades ou Heap, é uma estrutura que organiza os elementos com base em um valor que é definido como prioridade. Dispondo os elementos tal que, o de maior prioridade sempre estará no topo da fila. Ela é representada como uma árvore binária em vetor, no qual **o índice zero fica inutilizado**, e os **filhos de um elemento k**, são, respectivamente, **2k e 2k + 1**, Reciprocamente o pai de qualquer elemento **k** é **k/2**. 
+
+```mermaid
+    graph LR;
+    A[0] --> B[1]
+    B --> C[2]
+    C --> D[3]
+    D --> E[4]
+
+    style A fill: #FFFFFF
+
+```
 
 
 # Grafos
