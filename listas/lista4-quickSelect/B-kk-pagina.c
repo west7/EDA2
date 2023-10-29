@@ -78,3 +78,31 @@ void quickselect(int *v, int l, int r, int k)
     else if (m < k)
         quickselect(v, m + 1, r, k);
 }
+
+int main()
+{
+    int n, p, x;
+    scanf(" %d %d %d", &n, &p, &x);
+
+    int *paginas = (int *)malloc(n * sizeof(int));
+
+    for (int i = 0; i < n; i++)
+    {
+        scanf(" %d", &paginas[i]);
+    }
+
+    int ini = p * x;
+    int fim = ini + x;
+
+    quickselect(paginas, 0, n - 1, min(n - 1, ini));
+    quickselect(paginas, 0, n - 1, min(n - 1, (p + 1) * x - 1));
+    quicksort(paginas, min(n - 1, ini), min(n - 1, (p + 1) * x - 1));
+
+    for (int i = ini; i < min(n, (p + 1) * x); i++)
+    {
+        printf("%d\n", paginas[i]);
+    }
+
+    free(paginas);
+    return 0;
+}
