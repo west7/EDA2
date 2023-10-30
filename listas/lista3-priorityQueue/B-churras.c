@@ -1,101 +1,98 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-static int qp[100005];
-static int pq[100005];
-static int N;
-int *vetor;
 
-void fixup(int *pq, int k);
-void fixdown(int *pq, int k, int N);
+#define nota(a) (a->nota)
+#define greater(a, b) (nota(a) > nota(b))
+#define swap(a, b)  \
+    {               \
+        Churras t = a; \
+        a = b;      \
+        b = t;      \
+    }
 
-#define greater(a, b) (vetor[a] > vetor[b])
+typedef struct Churras{
+    int nota;
+    int index;
+}*Churras;
 
-int exch(int i, int j){
-    int t = qp[i];
-    qp[i] = qp[j];
-    qp[j] = t;
-    pq[qp[i]] = i;
-    pq[qp[j]] = j;
-}
+typedef struct Heap{
+    Churras *heap;
+    int size;
+} Heap;
 
-void PQinit(int c){
-    N = 0;
-}
+void fixup(Churras *heap, int size){
 
-int PQespia(){
-    return vetor[pq[1]];
-}
-
-void PQchange(int k){
-    fixup(pq, qp[k]);
-    fixdown(pq, qp[k], N);
-}
-
-int PQempty(){
-    return N == 0;
-}
-
-void PQinsert(int k){
-    qp[k] = ++N;
-    pq[N] = k;
-    fixup(pq, N);
-}
-
-int PQremove(){
-    exch(pq[1], pq[N]);
-    fixdown(pq, 1, N - 1);
-    return pq[N--];
-}
-
-void fixup(int *pq, int k){
-    while(k > 1 && greater(pq[k/2], pq[k])){
-        exch(pq[k], pq[k/2]);
-        k = k/2;
+    for(int i = size; i > 1 && greater(heap[i/2], heap[i]); i /= 2){
+        swap(heap[i], heap[i/2]);
+        heap[i]->index = i;
+        heap[i/2]->index = i/2;
     }
 }
 
-void fixdown(int *pq, int k, int N){
-    int j;
-    while(2 * k <= N){
-        j = 2*k;
-        if(j < N && greater(pq[j], pq[j + 1])) j++;
+void fixdown(Churras *heap, int size, int i){
 
-        if(!greater(pq[k], pq[j])) break;
-        exch(pq[k], pq[j]);
-        k = j;
+    for(int l = i * 2; i * 2 <= size; i = l, l = i * 2){
+
+        if(l < size && greater(heap[l], heap[l + 1])) l++;
+
+        if(!greater(heap[i], heap[l])) break;
+
+        swap(heap[i], heap[l]);
+        heap[i]->index = i;
+        heap[l]->index = l;
     }
 }
 
-void solve(int c, int k, int *v){
-    int older = 0;
-    int next = k;
-    vetor = v;
-    PQinit(c);
+Heap PQinit(int k)
+{
+    Heap hp;
+    hp.size = 0;
+    hp.heap = malloc(sizeof(Churras) * (k + 1));
+    return hp;
+}
 
-    for(int i = 0; i<k; i++){
-        PQinsert(i);
-    }
-    while (next <= c){
-        printf("%d ", PQespia());
-        v[older] = 0;
-        PQchange(older);
-        PQremove();
-        older++;
-        PQinsert(next);
-        next++; 
-    }
-    printf("\n");
+void PQinsert(Heap *hp, Churras c){
+
+    hp->heap[++hp->size] = c;
+    c->index = hp->size;
+    fixup(hp->heap, hp->size);
+}
+
+Churras PQespia(Heap hp){
+    return hp.heap[1];
+}
+
+Churras PQremove(Heap *hp, int i){
+    Churras r = hp->heap[i];
+    hp->heap[i] = hp->heap[hp->size--];
+    fixdown(hp->heap, hp->size, i);
+    return r;
 }
 
 int main(){
-    int v[100005];
-    int n, k;
 
-    while (scanf("%d %d", &n, &k) == 2 && n != 0 && k != 0)
-    {
-        for(int i = 0; i < n; i++){
-            scanf("%d", &v[i]);
+    int n, k;
+    while (scanf("%d %d", &n, &k) == 2){
+
+        if(n == 0 && k == 0) break;
+
+        Churras c = malloc(n * sizeof(struct Churras));
+
+        for(int i = 0; i < n; i++)
+            scanf("%d", &c[i].nota);     
+
+        Heap hp = PQinit(k); 
+
+        for(int i = 0; i < k - 1; i++)
+            PQinsert(&hp, &c[i]);
+        
+        for(int i = k - 1; i < n; i++){
+            PQinsert(&hp, &c[i]);
+            printf("%d%c", PQespia(hp)->nota, " \n"[i == n - 1]);
+            PQremove(&hp, c[i - k + 1].index);
         }
-        solve(n, k, v);
-    }
+        free(hp.heap);
+    }    
+    return 0;
 }
