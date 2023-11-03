@@ -226,11 +226,11 @@ graph TD;
     g7(30) --> h7(25)
     end
 
-    classDef myNodeStyle fill:#000000,stroke-width:1px;
+    classDef myNodeStyle fill:#000000,stroke-width:1px, rx: 10px, ry 10px;
 
     class A,B,C,A2,B2,A3,B3,A4,D4,E4,A5,B6,C6,a7,b7,c7,d7,e7,f7,g7 myNodeStyle;
 
-    style C2 fill: #FF272A
+    style C2 fill: #FF272A, 
     style C3 fill: #FF272A
     style B4 fill: #FF272A
     style C4 fill: #FF272A
@@ -400,7 +400,7 @@ A Fila de Prioridades ou Heap, é uma estrutura que organiza os elementos com ba
 - Exemplo:
 >Legenda: Branco: Pai (k), Vermelho: filho (2k), Roxo: filho (2k + 1).
 
-```mermaid
+```mermaid  
     graph LR;
     A[0] --> B[1]
     B --> C[2]
@@ -416,7 +416,7 @@ A Fila de Prioridades ou Heap, é uma estrutura que organiza os elementos com ba
     
 
     classDef myNodeStyle fill:#000000;
-    class C,B,D,E,F,G,H myNodeStyle;
+    class C,B,D,E,F,G,H myNodeStyle; 
 ```
 
 ```mermaid
@@ -459,6 +459,8 @@ A Fila de Prioridades ou Heap, é uma estrutura que organiza os elementos com ba
     class C,B,D,E,F,G,H myNodeStyle;
 ```
 
+E assim sucessivamente.
+
 ## 3.1 Conceitos
 
 ### 3.1.1 Fila de prioridades crescente e decrescente
@@ -494,7 +496,7 @@ Um item **K** é máximo se nenhum item é estritamente **maior** que **K**. Um 
         int size;
     }Heap;
 ```
-
+>Obs: "Item" pode ser de qualquer tipo: int, char, tipos abstratos, etc... 
 
 ### 3.2.2 Conserta pra cima (swim)
 Suponha que em algum momento estejamos com a seguinte Heap crescente "estragada":
@@ -507,19 +509,19 @@ Suponha que em algum momento estejamos com a seguinte Heap crescente "estragada"
     graph LR;
     0 --> S --> P --> R --> G1(G) --> T --> O --> A --> E --> I --> H --> G2(G)
 
-    style T stroke-width: 3px, stroke: #FFF000
+    style T stroke-width: 3px, stroke: #FF0000
     style 0 fill: #333
 ```
 
-- Observe que " T " está em uma posição errada, já que é o elemeneto de maior prioridade, então temos que consertar sua posição.
+- Observe que " T " está em uma posição errada, já que é o elemento de maior prioridade, então temos que consertar sua posição.
 
 
 ```mermaid
     graph LR;
     0 --> S --> T --> R --> G1(G) --> P --> O --> A --> E --> I --> H --> G2(G)
 
-    style T stroke-width: 3px, stroke: #FFF000
-    style P stroke-width: 3px, stroke: #FFFFA7
+    style T stroke-width: 3px, stroke: #FF0000
+    style P stroke-width: 3px, stroke: #AF0F33
     style 0 fill: #333
 ```
 
@@ -529,8 +531,8 @@ Suponha que em algum momento estejamos com a seguinte Heap crescente "estragada"
     graph LR;
     0 --> T --> S --> R --> G1(G) --> P --> O --> A --> E --> I --> H --> G2(G)
 
-    style T stroke-width: 3px, stroke: #FFF000
-    style S stroke-width: 3px, stroke: #FFFFA7
+    style T stroke-width: 3px, stroke: #FF0000
+    style S stroke-width: 3px, stroke: #AF0F33
     style 0 fill: #333
 ```
 
@@ -568,28 +570,28 @@ Suponha que em algum momento estejamos com a seguinte Heap decrescente "estragad
     graph LR;
     T --> H --> R --> P --> S --> O --> A --> E --> I --> N --> G
 
-    style H stroke-width: 3px, stroke: #FFF000
+    style H stroke-width: 3px, stroke: #FF0000
 
 ```
 
 - Observe que " H " está em uma posição errada, está em uma posição acima de " P " e " S ", mesmo tendo menor prioridade.
 
-
 ```mermaid
     graph LR;
     T --> S --> R --> P --> H --> O --> A --> E --> I --> N --> G
 
-    style H stroke-width: 3px, stroke: #FFF000
-    style S stroke-width: 3px, stroke: #FFFFA7
+    style H stroke-width: 3px, stroke: #FF0000
+    style S stroke-width: 3px, stroke: #AF0F33
 ```
+
 - " H " troca com " S " ("S" já está na posição correta pois tem maior prioridade que qualquer elemento abaixo dele).
 
 ```mermaid
     graph LR;
     T --> S --> R --> P --> N --> O --> A --> E --> I --> H --> G
 
-    style H stroke-width: 3px, stroke: #FFF000
-    style N stroke-width: 3px, stroke: #FFFFA7
+    style H stroke-width: 3px, stroke: #FF0000
+    style N stroke-width: 3px, stroke: #AF0F33
 ```
 
 - " H " troca com " N " ("N" já está na posição correta pois tem maior prioridade que qualquer elemento abaixo dele).
@@ -646,14 +648,196 @@ Função "Conserta pra baixo" ou **fixdown**:
     }
 ```
 
-# Grafos
-Grafos são um conjunto de vértices e arestas.
+# 4. Grafos
+Grafos são estruturas de dados amplamente utilizadas na computução. São uma ótima maneira de representar relacionamentos entre elementos, como por exemplo: mapas, redes, encanação, aeroportos, etc. Podem ser representados graficamente como um conjunto de vértices e arestas.
 
-## 4.1 Grafos dirigidos
+## 4.1 Implementação
+Existem duas principais formas de reprensentá-los. **Matriz de adjacência** ou **Lista de adjacência**.
+
+### 4.1.1 Matriz de Adjacência
+Uma matriz bidimensional que representa a relação entre os vértices. Os elementos da matriz indicam se há ou não uma relação entre os vértices. Útil para grafos densos (completos ou quase completos). Consome espaço proporcional à V² (onde V é o número de vértices). Acesso rápido para verificar a existência de arestas (O(1)).
+
+- Imagine o seguinte grafo:
+
+```mermaid
+    graph LR;
+    0 --- 1 & 2
+    1 --- 2
+    2 --- 3
+    4
+
+    classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;
+```
+
+- Sua respectiva matriz de adjacência poderia ser representada da seguinte maneira:
+  
+    |       | 0   | 1   | 2   | 3   | 4   |
+    | ----- | --- | --- | --- | --- | --- |
+    | **0** | 1   | 1   | 1   | 0   | 0   |
+    | **1** | 1   | 1   | 1   | 0   | 0   |
+    | **2** | 1   | 1   | 1   | 1   | 0   |
+    | **3** | 0   | 0   | 1   | 1   | 0   |
+    | **4** | 0   | 0   | 0   | 0   | 1   |
+
+  **Os ' 1 's representam as conexões** e os **' 0 's a ausência delas**, por padrão a diagonal principal já é preenchida com ' 1 ', a conexão de um elemento com ele mesmo é trivial.
+
+### 4.1.2 Lista de Adjacência
+
+## 4.2 Grafos dirigidos ou Digrafos
 São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta de '0' para '1', não necessariamente tenho uma aresta de '1' para '0'.
 
-## 4.2 Grafo Completo
-Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta para cada outro vértice no grafo. Totalizando no máximo (v-1)/2 arestas, onde 'v' é o número de vértices.
+```mermaid
+    graph LR;
+    4 --> 0 & 1
+    0 --> 1
+    1 --> 2
+    2 --> 0 & 3
+    0 --> 3
+
+
+    classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;
+```
+
+- Há um fluxo entre os vértices, apartir do "0" consigo alcançar qualquer vértice, porém apartir do "3" não consigo antigir nenhum outro vértice.
+
+
+## 4.3 Grafo Completo
+Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta para cada outro vértice no grafo. Totalizando o de máximo v*(v-1)/2 arestas, onde 'v' é o número de vértices.
+
+```mermaid
+    graph LR;
+    0 --- 1 & 2 & 3
+    2 --- 3
+    1 --- 2 & 3
+
+
+    classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;
+```
+
+- Note que todos os vértices tem ligação entre si, tornando o grafo acima completo. Com um **total de 4 vértices**, têm-se um **total de 4*3/2** arestas, ou **6 arestas**.
+
+
+## 4.4 Conceitos
+
+### 4.4.1 Classificação de Vértices
+---
+- Vértices **"sink"** são aquelas que não possuem arestas **saindo** dele, apenas **chegando**, **3** é um vértice sink.
+- Vértices **"source"** são aqueles que não possuem arestas **chegando** dele, apenas **saindo**, **4** é um vértice source.
+
+### 4.4.2 Caminho 
+---
+Caminho em grafos é a **sequência de vértices** em que cada vértice **sucessivo** é **adjacente** ao predecessor, ou seja, cada vértice está conectado ao seguinte por uma aresta. São uma parte essencial da análise e resolução de problemas com grafos e podem ter diversas aplicações, incluindo navegação, otimização, planejamento de rotas, etc.
+
+- **Caminho Simples** - Um caminho onde todos os vértices são distintos, exceto o primeiro e último, que podem ser iguais. *Obs: Não necessariamente o caminho mais curto*.
+
+- **Caminho fechado (Circuito)** - Um caminho no qual o vértice de partida e vértice de chegada é o mesmo. Se for um **caminho simples**, todos os vértices no caminho são distintos, é chamado de **Ciclo**.
+
+Exemplo:
+  ```mermaid
+    graph LR;
+    0 --- 1
+    1 --- 2
+    2 --- 0
+
+    classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;
+  ```
+
+- **Caminho mínimo** -   O caminho mínimo entre dois vértices é o caminho mais curto em termos de custo, peso ou distância. Isso é frequentemente usado em problemas de otimização, como encontrar a rota mais curta em um sistema de transporte.
+
+### 4.4.3 Conectividade
+---
+- **Grafo Conexo** - Um grafo é conexo se há um caminho de cada vértice para todo outro vértice. Em outras palavras não importa o vértice de partida você sempre será capaz de alcançar qualquer outro vértice do grafo. 
+
+Exemplo:
+```mermaid
+    graph LR;
+    0 --- 1
+    1 --- 2
+    2 --- 0
+
+    classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;
+```
+---
+- **Grafo não Conexo** - Um grafo que não é conexo consiste em um conjunto de outros componentes conexos.
+
+Exemplo:
+```mermaid
+    graph LR;
+    0 --- 1
+    1 --- 2
+    2 --- 0
+    4 --- 5
+
+    classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4,5 myNodeStyle;
+```
+
+### 4.4.4 Grafos dirigidos conexos acíclicos
+---
+- É um grafo dirigido que não possui ciclos. **Árvores são grafos dirigidos acíclicos**, observe que **Toda árvore é um digrafo acíclico**, porém **nem todo digrafo acíclico é uma árvore**, vértices de um digrafo podem ter mais de uma aresta e não necessariamente existe uma hierarquia entre os filhos e o pai, diferentemente de uma árvore.
+  
+```mermaid
+
+    graph TD;
+    0 --> 1 & 2;
+    1 --> 5 & 3 & 4;
+    2 --> 6 & 7;
+    3 --> 8 & 9 & 10;
+    4 --> 11;
+    7 --> 12 & 13;
+
+    classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4,5,6,7,8,9,10,11,12,13 myNodeStyle;
+```
+
+### 4.4.5 Grafo dirigido fortemente conexo
+---
+A noção de **conectividade forte** é aplicada aos **digrafos**. Um grafo direcionado ou dirigido é considerado fortemente conexo se para cada par de vértices (v, w) existe uma aresta de **v para w** e uma aresta de **w para v**.
+
+- Fecho transitivo Algoritmo de floyd marshall (O(v³))
+  - //TODO diagrama
+  - //TODO algoritmo
+
+## 4.5 Structs e algoritmos inicias
+A estrutura básica para representar um grafo é a **Aresta(Edge)**, que simboliza a conexão entre dois **Vértices(Vertex)**, que podem ser abstraídos para um **Item** em questão, que pode ser um `int`, `char` ou qualquer `tipo abstrato` que for definido.
+```C
+    typedef struct Edge{
+        int v; 
+        int w;
+    }Edge;  
+```
+Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de-adjacência) e [Lista de Adjacência](#412-lista-de-adjacência), que são:
+```C
+    #define MAX_VERTEX 100 
+
+    //Matriz de Adjacência
+    typedef struct Matrix{
+        int numVertex;                          //Guarda o número total de vértices
+        int matrix[MAX_VERTEX][MAX_VERTEX];     //Matriz de fato
+    }Matrix;
+
+    //Lista de Adjacência
+    typedef struct Node{
+        int vertex;                             //Número do vértice atual
+        Node *next;                             //Endereço do próx nó
+        Edge *edges;                            //Lista/Vetor de conexões
+    }Node;
+
+    typedef struct List{
+        int numVertex;                          //Guarda o número total de vértices
+        Node *head;                             //Cabeça da lista
+    }List;
+```
+
+### 4.4.6 Como inverter as arestas de um grafo?
+
+//TODO GRAPHreverse
+
 
 # QuickSelect
 
