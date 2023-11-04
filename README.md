@@ -9,7 +9,7 @@ Professor: [Bruno Ribas.](https://www.brunoribas.com.br/)
 
 <b>Esta seção contém as listas de exercícios desenvolvidos na disciplina, para acessar os problemas basta clicar no link relacionado ao nome do exercíco em questão. E para acessar as soluções clique no título da lista desejada.</b>
 
-## [Lista I - Desenferrujando para semestre](listas/lista1-Desenferrujando)  
+## [Lista I - Desenferrujando para semestre](listas/lista1-desenferrujando)  
 
 <b>A primeira lista é voltada para revisão e familiarização com o formato das listas.</b>
 
@@ -672,6 +672,8 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
 
 - Sua respectiva matriz de adjacência poderia ser representada da seguinte maneira:
   
+  <div align= "center">
+
     |       | 0   | 1   | 2   | 3   | 4   |
     | ----- | --- | --- | --- | --- | --- |
     | **0** | 1   | 1   | 1   | 0   | 0   |
@@ -679,10 +681,39 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
     | **2** | 1   | 1   | 1   | 1   | 0   |
     | **3** | 0   | 0   | 1   | 1   | 0   |
     | **4** | 0   | 0   | 0   | 0   | 1   |
+  
+  </div>
 
   **Os ' 1 's representam as conexões** e os **' 0 's a ausência delas**, por padrão a diagonal principal já é preenchida com ' 1 ', a conexão de um elemento com ele mesmo é trivial.
 
 ### 4.1.2 Lista de Adjacência
+A ideia da lista de adjacência é construir um vetor de tamanho V (número de vértices) onde cada indíce representa um vértice do grafo, e cada espaço do vetor contém um ponteiro para uma lista encadeada, que representa as conexões daquele vértice com outros vértices do grafo. Pode ser comparada ao [Encadeamento Separado](#113-encadeamento-separado) da Hash Table.
+
+<div align="center" >
+
+| 0   | 1   | 2   | 3   | 4   |
+| --- | --- | --- | --- | --- |
+| 1   | 2   | 3   |
+| 2   |
+</div> 
+
+Note que é uma representação bem mais enxuta comparada à matriz, logo também ocupa menos espaço. Vale ressaltar que, uma conexão não precisa ser representada duas vezes, ou seja, se um vértice tem conexão com um vértice menor que ele mesmo, não é necessário incluir esta aresta na lista de adjacências, pois esta aresta já estará representada no vértice menor, por exemplo a **aresta (0, 2)**, note que o **0** ja contém a conexão com o **2**, portanto não se faz necessário representar esta conexão novamente no vértice **2**. Obviamente isto só é verdadeiro para [grafos não direcionados](#42-grafos-dirigidos-ou-digrafos), neste caso, aí sim, eu teria que inserir esta conexão em ambos vértices.
+
+### 4.1.3 Bônus - Matriz X Lista
+Apresentadas ambas estratégias, podemos definir algumas vantagens e desvantagens entre elas:
+> E = número de arestas , V = número de vértices
+
+|                        | Vetor de Arestas | Matriz de Adjacência | Lista de Adjacência |
+| ---------------------- | ---------------- | -------------------- | ------------------- |
+| **space**              | E                | V²                   | V + E               |
+| **Initialize**         | 1                | V²                   | V                   |
+| **Copy**               | E                | V²                   | E                   |
+| **Destroy**            | 1                | V                    | E                   |
+| **Insert Edge**        | 1                | 1                    | 1                   |
+| **Find/Remove Edge**   | E                | 1                    | V                   |
+| **Vertex is isolate?** | E                | V                    | 1                   |
+| **Path from U to V**   | E * log V        | V²                   | E + V               |
+
 
 ## 4.2 Grafos dirigidos ou Digrafos
 São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta de '0' para '1', não necessariamente tenho uma aresta de '1' para '0'.
@@ -705,6 +736,8 @@ São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta
 
 ## 4.3 Grafo Completo
 Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta para cada outro vértice no grafo. Totalizando o de máximo v*(v-1)/2 arestas, onde 'v' é o número de vértices.
+
+
 
 ```mermaid
     graph LR;
@@ -736,6 +769,7 @@ Caminho em grafos é a **sequência de vértices** em que cada vértice **sucess
 - **Caminho fechado (Circuito)** - Um caminho no qual o vértice de partida e vértice de chegada é o mesmo. Se for um **caminho simples**, todos os vértices no caminho são distintos, é chamado de **Ciclo**.
 
 Exemplo:
+
   ```mermaid
     graph LR;
     0 --- 1
@@ -762,6 +796,7 @@ Exemplo:
     classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4 myNodeStyle;
 ```
+
 ---
 - **Grafo não Conexo** - Um grafo que não é conexo consiste em um conjunto de outros componentes conexos.
 
@@ -780,7 +815,7 @@ Exemplo:
 ### 4.4.4 Grafos dirigidos conexos acíclicos
 ---
 - É um grafo dirigido que não possui ciclos. **Árvores são grafos dirigidos acíclicos**, observe que **Toda árvore é um digrafo acíclico**, porém **nem todo digrafo acíclico é uma árvore**, vértices de um digrafo podem ter mais de uma aresta e não necessariamente existe uma hierarquia entre os filhos e o pai, diferentemente de uma árvore.
-  
+
 ```mermaid
 
     graph TD;
@@ -816,10 +851,10 @@ Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de
     #define MAX_VERTEX 100 
 
     //Matriz de Adjacência
-    typedef struct Matrix{
+    typedef struct Graph{
         int numVertex;                          //Guarda o número total de vértices
         int matrix[MAX_VERTEX][MAX_VERTEX];     //Matriz de fato
-    }Matrix;
+    }Graph;
 
     //Lista de Adjacência
     typedef struct Node{
@@ -828,10 +863,33 @@ Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de
         Edge *edges;                            //Lista/Vetor de conexões
     }Node;
 
-    typedef struct List{
+    typedef struct Graph{
         int numVertex;                          //Guarda o número total de vértices
+        int size;                               //Número total de arestas
         Node *head;                             //Cabeça da lista
-    }List;
+    }Graph;
+```
+
+## 4.6 Busca em Largura (BFS)
+
+Se assemelha à uma explosão, feita para achar **menores caminhos**. A **BFS** explora todos os vizinhos de um nó antes de avançar para os vizinhos dos vizinhos. O algoritmo usa de uma **Fila** para controlar as ordens de acesso aos vértices. Ela garante que todos os vértices de uma profundidade *d* serão explorados antes de explorar vértices de uma profundidade *d + 1*.
+
+## 4.7 Busca em profundidade (DFS)
+Explora sempre o caminho mais profundo do grafo antes de retroceder. Faz uso de uma **Pilha** ou de **Recursão**(que também é um pilha) para controlar a ordem de acesso aos vértices. Algoritmo guloso, vai em um mesmo caminho até não conseguir mais, boa para **BackTracking** (fazer uma escolha baseado no que acontecer), usada para encontrar soluções, como caminhos mais longos ou todos os caminhos possíveis. Melhor quando é preciso encontrar todos os caminhos de um grafo.
+
+```C
+    static int cnt, pre[MAX_VERTEX];
+
+    void dfsr(Graph *G, Edge e)
+    {
+        int t, w = e.w;
+        pre[w] = cnt++;
+
+        for(t = 0; t < G->numVertex; t++)
+            if(G -> adj[w][t] != 0)
+                if(pre[t] == -1)
+                    dfsr(G, Edge{w, t});
+    }
 ```
 
 ### 4.4.6 Como inverter as arestas de um grafo?
