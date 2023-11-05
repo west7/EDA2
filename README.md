@@ -684,7 +684,9 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
   
   </div>
 
-  **Os ' 1 's representam as conexões** e os **' 0 's a ausência delas**, por padrão a diagonal principal já é preenchida com ' 1 ', a conexão de um elemento com ele mesmo é trivial.
+- **Os ' 1 's representam as conexões** e os **' 0 's a ausência delas**, por padrão a diagonal principal já é preenchida com ' 1 ', a conexão de um elemento com ele mesmo é trivial.
+
+Veja a [Implementação.](#45-structs-e-algoritmos-inicias)
 
 ### 4.1.2 Lista de Adjacência
 A ideia da lista de adjacência é construir um vetor de tamanho V (número de vértices) onde cada indíce representa um vértice do grafo, e cada espaço do vetor contém um ponteiro para uma lista encadeada, que representa as conexões daquele vértice com outros vértices do grafo. Pode ser comparada ao [Encadeamento Separado](#113-encadeamento-separado) da Hash Table.
@@ -699,6 +701,8 @@ A ideia da lista de adjacência é construir um vetor de tamanho V (número de v
 
 Note que é uma representação bem mais enxuta comparada à matriz, logo também ocupa menos espaço. Vale ressaltar que, uma conexão não precisa ser representada duas vezes, ou seja, se um vértice tem conexão com um vértice menor que ele mesmo, não é necessário incluir esta aresta na lista de adjacências, pois esta aresta já estará representada no vértice menor, por exemplo a **aresta (0, 2)**, note que o **0** ja contém a conexão com o **2**, portanto não se faz necessário representar esta conexão novamente no vértice **2**. Obviamente isto só é verdadeiro para [grafos não direcionados](#42-grafos-dirigidos-ou-digrafos), neste caso, aí sim, eu teria que inserir esta conexão em ambos vértices.
 
+Veja a [Implementação.](#45-structs-e-algoritmos-inicias)
+
 ### 4.1.3 Bônus - Matriz X Lista
 Apresentadas ambas estratégias, podemos definir algumas vantagens e desvantagens entre elas:
 > E = número de arestas , V = número de vértices
@@ -706,11 +710,11 @@ Apresentadas ambas estratégias, podemos definir algumas vantagens e desvantagen
 |                        | Vetor de Arestas | Matriz de Adjacência | Lista de Adjacência |
 | ---------------------- | ---------------- | -------------------- | ------------------- |
 | **space**              | E                | V²                   | V + E               |
-| **Initialize**         | 1                | V²                   | V                   |
-| **Copy**               | E                | V²                   | E                   |
-| **Destroy**            | 1                | V                    | E                   |
-| **Insert Edge**        | 1                | 1                    | 1                   |
-| **Find/Remove Edge**   | E                | 1                    | V                   |
+| **initialize**         | 1                | V²                   | V                   |
+| **copy**               | E                | V²                   | E                   |
+| **destroy**            | 1                | V                    | E                   |
+| **insert Edge**        | 1                | 1                    | 1                   |
+| **find/remove Edge**   | E                | 1                    | V                   |
 | **Vertex is isolate?** | E                | V                    | 1                   |
 | **Path from U to V**   | E * log V        | V²                   | E + V               |
 
@@ -834,7 +838,7 @@ Exemplo:
 ---
 A noção de **conectividade forte** é aplicada aos **digrafos**. Um grafo direcionado ou dirigido é considerado fortemente conexo se para cada par de vértices (v, w) existe uma aresta de **v para w** e uma aresta de **w para v**.
 
-- Fecho transitivo Algoritmo de floyd marshall (O(v³))
+- Fecho transitivo Algoritmo de floyd Warshall (O(v³))
   - //TODO diagrama
   - //TODO algoritmo
 
@@ -853,7 +857,8 @@ Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de
     //Matriz de Adjacência
     typedef struct Graph{
         int numVertex;                          //Guarda o número total de vértices
-        int matrix[MAX_VERTEX][MAX_VERTEX];     //Matriz de fato
+        int size;                               //Número total de arestas
+        int adj[MAX_VERTEX][MAX_VERTEX];        //Matriz de fato
     }Graph;
 
     //Lista de Adjacência
@@ -866,7 +871,7 @@ Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de
     typedef struct Graph{
         int numVertex;                          //Guarda o número total de vértices
         int size;                               //Número total de arestas
-        Node *head;                             //Cabeça da lista
+        Node *adj;                             //Cabeça da lista
     }Graph;
 ```
 
@@ -874,8 +879,14 @@ Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de
 
 Se assemelha à uma explosão, feita para achar **menores caminhos**. A **BFS** explora todos os vizinhos de um nó antes de avançar para os vizinhos dos vizinhos. O algoritmo usa de uma **Fila** para controlar as ordens de acesso aos vértices. Ela garante que todos os vértices de uma profundidade *d* serão explorados antes de explorar vértices de uma profundidade *d + 1*.
 
+```C
+
+```
+
 ## 4.7 Busca em profundidade (DFS)
 Explora sempre o caminho mais profundo do grafo antes de retroceder. Faz uso de uma **Pilha** ou de **Recursão**(que também é um pilha) para controlar a ordem de acesso aos vértices. Algoritmo guloso, vai em um mesmo caminho até não conseguir mais, boa para **BackTracking** (fazer uma escolha baseado no que acontecer), usada para encontrar soluções, como caminhos mais longos ou todos os caminhos possíveis. Melhor quando é preciso encontrar todos os caminhos de um grafo.
+
+- Implementação 1 (Bruno Ribas):
 
 ```C
     static int cnt, pre[MAX_VERTEX];
@@ -889,6 +900,33 @@ Explora sempre o caminho mais profundo do grafo antes de retroceder. Faz uso de 
             if(G -> adj[w][t] != 0)
                 if(pre[t] == -1)
                     dfsr(G, Edge{w, t});
+    }
+```
+
+- Implementação 2:
+
+```C
+    void dfsUtil(Graph *G, int vertex, bool visited)
+    {
+        visited[vertex] = true;
+
+        Node *temp = G->adj[vertex];
+
+        while(temp != NULL)
+        {
+            int adjVertex = temp->vertex;
+            if(!visited[adjVertex])
+                dfsr2(G, adjVertex, visited);
+            temp = temp->next;
+        }
+    }
+
+    void dfs(Graph *G, int startVertex)
+    {
+        bool visited[MAX_VERTEX];
+        for(int i = 0; i < MAX_VERTEX; i++)
+            visited[i] = false;
+        dfsUtil(G, startVertex, visited);
     }
 ```
 
