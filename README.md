@@ -1,6 +1,6 @@
 # Estrutura de Dados e Algoritmos 2
 
-Este repositório é dedicado a disciplina de 'Estrutura de dados e algoritmos 2' da Universidade de Brasília. Tem como objetivo documentar as [Listas de Exercícios](#listas-de-exercícios) disponiblizadas no [CD-MOJ](https://moj.naquadah.com.br/cgi-bin/index.sh). Bem como a [Apostila](#apostila) dos conteúdos desenvolvidos durante o semestre. 
+Este repositório é dedicado a disciplina de 'Estrutura de dados e algoritmos 2' da Universidade de Brasília. Tem como objetivo documentar as [Listas de Exercícios](#listas-de-exercícios) disponibilizadas no [CD-MOJ](https://moj.naquadah.com.br/cgi-bin/index.sh). Bem como a [Apostila](#apostila) dos conteúdos desenvolvidos durante o semestre. 
 
 Professor: [Bruno Ribas.](https://www.brunoribas.com.br/)
 
@@ -23,7 +23,7 @@ Professor: [Bruno Ribas.](https://www.brunoribas.com.br/)
 - H : [Ultrapassa Minimamente](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-lista1-relembrando/ultrapassaminimamente.pdf)
 - I : [Soma String](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-lista1-relembrando/soma_string.pdf)
 - J : [Quem vai ser Reprovado](https://br.spoj.com/problems/PLACAR.pdf)
-- K : [Frequẽncia na aula](https://br.spoj.com/problems/FREQUE12.pdf) 
+- K : [Frequência na aula](https://br.spoj.com/problems/FREQUE12.pdf) 
 - L : [Analisando dados de degustação](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-lista1-relembrando/sequencia-desgustacao.pdf)
 - M : [Número Proibido](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-lista1-relembrando/proibido.pdf)
 - N : [Notas da Turma](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-lista1-relembrando/divide-turma.pdf)
@@ -61,7 +61,21 @@ Professor: [Bruno Ribas.](https://www.brunoribas.com.br/)
 
 ---
 
+## [Lista V - Grafos, o início](listas/lista5-grafos/)
+**A quinta lista introduz os conceitos e algoritmos básicos de [grafos](#4-grafos)**
+
+- A : [Eu vou estar lá!](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos/euvouestarla.pdf)
+- B : [Estradas asfaltadas](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos/grafo-nucleos-cidades.pdf)
+- C : [Estradas asfaltadas - viagem aérea](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos/grafo-ajude-joao.pdf)
+- D : [Natureza](https://br.spoj.com/problems/NATUREZA.pdf)
+- E : [Ir e vir](https://br.spoj.com/problems/IREVIR.pdf)
+
+---
+
 # Apostila
+
+## Sumário
+
 
 # 1. Hash Table
 É uma estrutura do tipo chave-valor, onde as chaves são usadas como índice para achar o elemento desejado, não admite chaves repetidas (tabela de símbolos). A chave é passada por uma função (normalmente o módulo) onde é gerado o índice/endereço na tabela. Esta função tem caráter determinístico ou seja, uma mesma chave sempre gera um mesmo endereço. Dessa forma é possível acessar qualquer elemento da tabela em grandeza constante O(1).
@@ -81,9 +95,9 @@ As colisões são um problema comum das tabelas hash, ocorrem quando duas chaves
 
 ### 1.1.1 Endereçamento aberto
 ---
-A estratégia do Endereçamento aberto, consiste basicamente em: se houver colisão, aloque o elemento 1 endereço pro lado. Porém, caso o número de colsões seja muito grande a busca passa a ser <b>linear (O(n))</b>, e não mais <b>constante (O(1))</b>.  
+A estratégia do Endereçamento aberto, consiste basicamente em: se houver colisão, aloque o elemento 1 endereço pro lado. Porém, caso o número de colisões seja muito grande a busca passa a ser <b>linear (O(n))</b>, e não mais <b>constante (O(1))</b>.  
 
-Por isso é interessante definir um número máximo de colisões para a hash, 10 por exemplo. Assim o tempo continuria sendo <b>constante (O(10))</b>. Mas, caso o limite de colisões esteja sendo muito excedido, há a chance de ter de crescer a tabela, que custa O(n).
+Por isso é interessante definir um número máximo de colisões para a hash, 10 por exemplo. Assim o tempo continuaria sendo <b>constante (O(10))</b>. Mas, caso o limite de colisões esteja sendo muito excedido, há a chance de ter de crescer a tabela, que custa O(n).
 
 ### 1.1.2 Double Hash
 ---
@@ -100,7 +114,7 @@ Onde 'K' é a chave e 'M' é o tamanho da hash table.
 
 ### 1.1.3 Encadeamento separado
 ---
-Cada posição da hash table seria a cabeça de uma lista encadeada. Ou seja, sempre que ocorresse uma colisão, o elemento simplesmente seria adicionado ao início da lista encadeada. Diferente das outras, nessa estratégia é mais difícil que o número de colisões fique muito grande, já que elementos colididos não ocupam a posição de outros elementos, tal que, mesmo que em uma chave específica o acesso seja linear, em outros endereços ele continuria a ser constante. Logo, vale avaliar cada caso e verificar se um limite de colisões se torna necessário ou não.
+Cada posição da hash table seria a cabeça de uma lista encadeada. Ou seja, sempre que ocorresse uma colisão, o elemento simplesmente seria adicionado ao início da lista encadeada. Diferente das outras, nessa estratégia é mais difícil que o número de colisões fique muito grande, já que elementos colididos não ocupam a posição de outros elementos, tal que, mesmo que em uma chave específica o acesso seja linear, em outros endereços ele continuaria a ser constante. Logo, vale avaliar cada caso e verificar se um limite de colisões se torna necessário ou não.
 
 ## 1.2 Bônus - Discussão sobre complexidades
 
@@ -507,10 +521,9 @@ Suponha que em algum momento estejamos com a seguinte Heap crescente "estragada"
 
 ```mermaid
     graph LR;
-    0 --> S --> P --> R --> G1(G) --> T --> O --> A --> E --> I --> H --> G2(G)
+    S --> P --> R --> G1(G) --> T --> O --> A --> E --> I --> H --> G2(G)
 
     style T stroke-width: 3px, stroke: #FF0000
-    style 0 fill: #333
 ```
 
 - Observe que " T " está em uma posição errada, já que é o elemento de maior prioridade, então temos que consertar sua posição.
@@ -518,22 +531,20 @@ Suponha que em algum momento estejamos com a seguinte Heap crescente "estragada"
 
 ```mermaid
     graph LR;
-    0 --> S --> T --> R --> G1(G) --> P --> O --> A --> E --> I --> H --> G2(G)
+    S --> T --> R --> G1(G) --> P --> O --> A --> E --> I --> H --> G2(G)
 
     style T stroke-width: 3px, stroke: #FF0000
     style P stroke-width: 3px, stroke: #AF0F33
-    style 0 fill: #333
 ```
 
 - O " T " assume a posição de " P ".
 
 ```mermaid
     graph LR;
-    0 --> T --> S --> R --> G1(G) --> P --> O --> A --> E --> I --> H --> G2(G)
+    T --> S --> R --> G1(G) --> P --> O --> A --> E --> I --> H --> G2(G)
 
     style T stroke-width: 3px, stroke: #FF0000
     style S stroke-width: 3px, stroke: #AF0F33
-    style 0 fill: #333
 ```
 
 - E, por fim, o " T " assume sua posição correta. O algoritmo que foi aplicado para resolver a incongruência, pode ser chamado de **"Conserta para cima"** ou **"swim"**.
@@ -649,7 +660,7 @@ Função "Conserta pra baixo" ou **fixdown**:
 ```
 
 # 4. Grafos
-Grafos são estruturas de dados amplamente utilizadas na computução. São uma ótima maneira de representar relacionamentos entre elementos, como por exemplo: mapas, redes, encanação, aeroportos, etc. Podem ser representados graficamente como um conjunto de vértices e arestas.
+Grafos são estruturas de dados amplamente utilizadas na computação. São uma ótima maneira de representar relacionamentos entre elementos, como por exemplo: mapas, redes, encanação, aeroportos, etc. Podem ser representados graficamente como um conjunto de vértices e arestas.
 
 ## 4.1 Implementação
 Existem duas principais formas de reprensentá-los. **Matriz de adjacência** ou **Lista de adjacência**.
@@ -672,34 +683,30 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
 
 - Sua respectiva matriz de adjacência poderia ser representada da seguinte maneira:
   
-  <div align= "center">
+|   | 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|---|
+| **0** | 1 | 1 | 1 | 0 | 0 |
+| **1** | 1 | 1 | 1 | 0 | 0 |
+| **2** | 1 | 1 | 1 | 1 | 0 |
+| **3** | 0 | 0 | 1 | 1 | 0 |
+| **4** | 0 | 0 | 0 | 0 | 1 |
 
-    |       | 0   | 1   | 2   | 3   | 4   |
-    | ----- | --- | --- | --- | --- | --- |
-    | **0** | 1   | 1   | 1   | 0   | 0   |
-    | **1** | 1   | 1   | 1   | 0   | 0   |
-    | **2** | 1   | 1   | 1   | 1   | 0   |
-    | **3** | 0   | 0   | 1   | 1   | 0   |
-    | **4** | 0   | 0   | 0   | 0   | 1   |
   
-  </div>
 
 - **Os ' 1 's representam as conexões** e os **' 0 's a ausência delas**, por padrão a diagonal principal já é preenchida com ' 1 ', a conexão de um elemento com ele mesmo é trivial.
 
 Veja a [Implementação.](#45-structs-e-algoritmos-inicias)
 
 ### 4.1.2 Lista de Adjacência
-A ideia da lista de adjacência é construir um vetor de tamanho V (número de vértices) onde cada indíce representa um vértice do grafo, e cada espaço do vetor contém um ponteiro para uma lista encadeada, que representa as conexões daquele vértice com outros vértices do grafo. Pode ser comparada ao [Encadeamento Separado](#113-encadeamento-separado) da Hash Table.
-
-<div align="center" >
+A ideia da lista de adjacência é construir um vetor de tamanho V (número de vértices) onde cada índice representa um vértice do grafo, e cada espaço do vetor contém um ponteiro para uma lista encadeada, que representa as conexões daquele vértice com outros vértices do grafo. Pode ser comparada ao [Encadeamento Separado](#113-encadeamento-separado) da Hash Table.
 
 | 0   | 1   | 2   | 3   | 4   |
 | --- | --- | --- | --- | --- |
 | 1   | 2   | 3   |
 | 2   |
-</div> 
 
-Note que é uma representação bem mais enxuta comparada à matriz, logo também ocupa menos espaço. Vale ressaltar que, uma conexão não precisa ser representada duas vezes, ou seja, se um vértice tem conexão com um vértice menor que ele mesmo, não é necessário incluir esta aresta na lista de adjacências, pois esta aresta já estará representada no vértice menor, por exemplo a **aresta (0, 2)**, note que o **0** ja contém a conexão com o **2**, portanto não se faz necessário representar esta conexão novamente no vértice **2**. Obviamente isto só é verdadeiro para [grafos não direcionados](#42-grafos-dirigidos-ou-digrafos), neste caso, aí sim, eu teria que inserir esta conexão em ambos vértices.
+
+Note que é uma representação bem mais enxuta comparada à matriz, logo também ocupa menos espaço. Vale ressaltar que, uma conexão não precisa ser representada duas vezes, ou seja, se um vértice tem conexão com um vértice menor que ele mesmo, não é necessário incluir esta aresta na lista de adjacências, pois esta aresta já estará representada no vértice menor, por exemplo a **aresta (0, 2)**, note que o **0** já contém a conexão com o **2**, portanto não se faz necessário representar esta conexão novamente no vértice **2**. Obviamente isto só é verdadeiro para [grafos não direcionados](#42-grafos-dirigidos-ou-digrafos), neste caso, aí sim, eu teria que inserir esta conexão em ambos vértices.
 
 Veja a [Implementação.](#45-structs-e-algoritmos-inicias)
 
@@ -735,7 +742,7 @@ São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta
     class 0,1,2,3,4 myNodeStyle;
 ```
 
-- Há um fluxo entre os vértices, apartir do "0" consigo alcançar qualquer vértice, porém apartir do "3" não consigo antigir nenhum outro vértice.
+- Há um fluxo entre os vértices, a partir do "0" consigo alcançar qualquer vértice, porém a partir do "3" não consigo atingir nenhum outro vértice.
 
 
 ## 4.3 Grafo Completo
@@ -773,7 +780,6 @@ Caminho em grafos é a **sequência de vértices** em que cada vértice **sucess
 - **Caminho fechado (Circuito)** - Um caminho no qual o vértice de partida e vértice de chegada é o mesmo. Se for um **caminho simples**, todos os vértices no caminho são distintos, é chamado de **Ciclo**.
 
 Exemplo:
-
   ```mermaid
     graph LR;
     0 --- 1
@@ -838,10 +844,6 @@ Exemplo:
 ---
 A noção de **conectividade forte** é aplicada aos **digrafos**. Um grafo direcionado ou dirigido é considerado fortemente conexo se para cada par de vértices (v, w) existe uma aresta de **v para w** e uma aresta de **w para v**.
 
-- Fecho transitivo Algoritmo de floyd Warshall (O(v³))
-  - //TODO diagrama
-  - //TODO algoritmo
-
 ## 4.5 Structs e algoritmos inicias
 A estrutura básica para representar um grafo é a **Aresta(Edge)**, que simboliza a conexão entre dois **Vértices(Vertex)**, que podem ser abstraídos para um **Item** em questão, que pode ser um `int`, `char` ou qualquer `tipo abstrato` que for definido.
 ```C
@@ -880,7 +882,27 @@ Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de
 Se assemelha à uma explosão, feita para achar **menores caminhos**. A **BFS** explora todos os vizinhos de um nó antes de avançar para os vizinhos dos vizinhos. O algoritmo usa de uma **Fila** para controlar as ordens de acesso aos vértices. Ela garante que todos os vértices de uma profundidade *d* serão explorados antes de explorar vértices de uma profundidade *d + 1*.
 
 ```C
+    static int cnt, pre[MAX_VERTEX];
 
+    void bfs(Graph *G, Edge e)
+    {
+        int v, w;
+        QueuePut(e);
+        pre[e.w] = cnt++;
+
+        while(!QueueEmpty()){
+            e = QueueGet();
+            w = e.w;
+            for(int *l = G->adj[w]; l != NULL; l =l->next){
+                int t = l->vertex;
+                if(pre[t] == -1){
+                    QueuePut(Edge{w, t});
+                    pre[t] = cnt++;
+                }
+
+            }
+        }
+    }
 ```
 
 ## 4.7 Busca em profundidade (DFS)
@@ -933,6 +955,10 @@ Explora sempre o caminho mais profundo do grafo antes de retroceder. Faz uso de 
 ### 4.4.6 Como inverter as arestas de um grafo?
 
 //TODO GRAPHreverse
+
+- Fecho transitivo Algoritmo de floyd Warshall (O(v³))
+  - //TODO diagrama
+  - //TODO algoritmo
 
 
 # QuickSelect

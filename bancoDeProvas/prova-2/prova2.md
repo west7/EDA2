@@ -3,7 +3,7 @@
 ### 1) 
 ![Questão 1](../assets/image-4.png)
 
-Os custos de inserção em uma heap é logarítima (O(log n)) e o custo de remoção é logarítima (O(log n)). 
+Os custos de inserção em uma heap é logarítimica (O(log n)) e o custo de remoção é logarítimica (O(log n)). 
 
 ### 2)
 ![Questão 2](../assets/image-2.png)
