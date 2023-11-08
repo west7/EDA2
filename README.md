@@ -477,7 +477,7 @@ E assim sucessivamente.
 
 ## 3.1 Conceitos
 
-### 3.1.1 Fila de prioridades crescente e decrescente
+### 3.1.1 Fila de prioridades crescente e decrescente (Min Heap e Max Heap)
 Na **heap crescente** o elemento de **menor prioridade** está no topo da fila, conforme se move para baixo a prioridade dos elementos aumentam. Na **heap decrescente** o elemento de **maior prioridade** está no topo da fila, conforme se move para baixo a prioridade dos elementos diminuem.
 
 ### 3.1.2 Item máximo e item mínimo
@@ -512,7 +512,7 @@ Um item **K** é máximo se nenhum item é estritamente **maior** que **K**. Um 
 ```
 >Obs: "Item" pode ser de qualquer tipo: int, char, tipos abstratos, etc... 
 
-### 3.2.2 Conserta pra cima (swim)
+### 3.2.2 Conserta para cima (swim)
 Suponha que em algum momento estejamos com a seguinte Heap crescente "estragada":
 
 > Obs: quanto mais próximo do fim do alfabeto, maior a prioridade
@@ -549,7 +549,7 @@ Suponha que em algum momento estejamos com a seguinte Heap crescente "estragada"
 
 - E, por fim, o " T " assume sua posição correta. O algoritmo que foi aplicado para resolver a incongruência, pode ser chamado de **"Conserta para cima"** ou **"swim"**.
 
-Função "Conserta pra cima" ou **fixup**:
+Função "Conserta para cima" ou **fixup**:
 
 ```C
     void fixup(Item *hp, int k)
@@ -570,7 +570,7 @@ Função "Conserta pra cima" ou **fixup**:
     }
 ```
 
-### 3.2.3 Conserta pra baixo (sink)
+### 3.2.3 Conserta para baixo (sink)
 
 Suponha que em algum momento estejamos com a seguinte Heap decrescente "estragada":
 
@@ -607,7 +607,7 @@ Suponha que em algum momento estejamos com a seguinte Heap decrescente "estragad
 
 - " H " troca com " N " ("N" já está na posição correta pois tem maior prioridade que qualquer elemento abaixo dele).
 
-Função "Conserta pra baixo" ou **fixdown**:
+Função "Conserta para baixo" ou **fixdown**:
 ```C
     void fixdown(Item *hp, int k, int size)
     {
@@ -615,7 +615,7 @@ Função "Conserta pra baixo" ou **fixdown**:
         while(2*k <= size)
         {
             j = 2*k;                            //j = filho 2k
-            if(j < size && less(v[j], v[j+1]))  //verfica qual filho é menor
+            if(j < size && less(v[j + 1], v[j]))  //verfica qual filho é menor
                 j++;                            //muda para filho (2k + 1), se for menor
             if(!less(v[k], v[j]))               //se o filho(j) tem menor prioridade que o pai(k), quebra o laço
                 break;
@@ -657,6 +657,15 @@ Função "Conserta pra baixo" ou **fixdown**:
 
         return t;
     }
+    
+    void PQchange(Heap *hp, int k, int newPriority)
+    {
+        if(k > 0 && k < hp->size){
+            hp->array[k].priority = newPriority
+            fixup(hp, k);
+            fixdown(hp, k, PQ->size);
+        }
+    }
 ```
 
 # 4. Grafos
@@ -683,15 +692,17 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
 
 - Sua respectiva matriz de adjacência poderia ser representada da seguinte maneira:
   
-|   | 0 | 1 | 2 | 3 | 4 |
-|---|---|---|---|---|---|
-| **0** | 1 | 1 | 1 | 0 | 0 |
-| **1** | 1 | 1 | 1 | 0 | 0 |
-| **2** | 1 | 1 | 1 | 1 | 0 |
-| **3** | 0 | 0 | 1 | 1 | 0 |
-| **4** | 0 | 0 | 0 | 0 | 1 |
+<div align="center">
 
-  
+|       | 0   | 1   | 2   | 3   | 4   |
+| ----- | --- | --- | --- | --- | --- |
+| **0** | 1   | 1   | 1   | 0   | 0   |
+| **1** | 1   | 1   | 1   | 0   | 0   |
+| **2** | 1   | 1   | 1   | 1   | 0   |
+| **3** | 0   | 0   | 1   | 1   | 0   |
+| **4** | 0   | 0   | 0   | 0   | 1   |
+
+</div>
 
 - **Os ' 1 's representam as conexões** e os **' 0 's a ausência delas**, por padrão a diagonal principal já é preenchida com ' 1 ', a conexão de um elemento com ele mesmo é trivial.
 
@@ -700,11 +711,15 @@ Veja a [Implementação.](#45-structs-e-algoritmos-inicias)
 ### 4.1.2 Lista de Adjacência
 A ideia da lista de adjacência é construir um vetor de tamanho V (número de vértices) onde cada índice representa um vértice do grafo, e cada espaço do vetor contém um ponteiro para uma lista encadeada, que representa as conexões daquele vértice com outros vértices do grafo. Pode ser comparada ao [Encadeamento Separado](#113-encadeamento-separado) da Hash Table.
 
+<div align="center">
+
+
 | 0   | 1   | 2   | 3   | 4   |
 | --- | --- | --- | --- | --- |
 | 1   | 2   | 3   |
 | 2   |
 
+</div>
 
 Note que é uma representação bem mais enxuta comparada à matriz, logo também ocupa menos espaço. Vale ressaltar que, uma conexão não precisa ser representada duas vezes, ou seja, se um vértice tem conexão com um vértice menor que ele mesmo, não é necessário incluir esta aresta na lista de adjacências, pois esta aresta já estará representada no vértice menor, por exemplo a **aresta (0, 2)**, note que o **0** já contém a conexão com o **2**, portanto não se faz necessário representar esta conexão novamente no vértice **2**. Obviamente isto só é verdadeiro para [grafos não direcionados](#42-grafos-dirigidos-ou-digrafos), neste caso, aí sim, eu teria que inserir esta conexão em ambos vértices.
 
@@ -721,12 +736,29 @@ Apresentadas ambas estratégias, podemos definir algumas vantagens e desvantagen
 | **copy**               | E                | V²                   | E                   |
 | **destroy**            | 1                | V                    | E                   |
 | **insert Edge**        | 1                | 1                    | 1                   |
-| **find/remove Edge**   | E                | 1                    | V                   |
+| **find/remove Edge**   | E                | 1                    | V                   |  
 | **Vertex is isolate?** | E                | V                    | 1                   |
 | **Path from U to V**   | E * log V        | V²                   | E + V               |
 
+## 4.2 Grafo Completo
+Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta para cada outro vértice no grafo. Totalizando o de máximo v*(v-1)/2 arestas, onde 'v' é o número de vértices.
 
-## 4.2 Grafos dirigidos ou Digrafos
+
+
+```mermaid
+    graph LR;
+    0 --- 1 & 2 & 3
+    2 --- 3
+    1 --- 2 & 3
+
+
+    classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;
+```
+
+- Note que todos os vértices tem ligação entre si, tornando o grafo acima completo. Com um **total de 4 vértices**, têm-se um **total de 4*3/2** arestas, ou **6 arestas**.
+
+## 4.3 Grafos dirigidos ou Digrafos
 São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta de '0' para '1', não necessariamente tenho uma aresta de '1' para '0'.
 
 ```mermaid
@@ -745,31 +777,12 @@ São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta
 - Há um fluxo entre os vértices, a partir do "0" consigo alcançar qualquer vértice, porém a partir do "3" não consigo atingir nenhum outro vértice.
 
 
-## 4.3 Grafo Completo
-Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta para cada outro vértice no grafo. Totalizando o de máximo v*(v-1)/2 arestas, onde 'v' é o número de vértices.
-
-
-
-```mermaid
-    graph LR;
-    0 --- 1 & 2 & 3
-    2 --- 3
-    1 --- 2 & 3
-
-
-    classDef myNodeStyle fill:#000000, stroke-width: 1px, rx: 10px, ry: 10px;
-    class 0,1,2,3,4 myNodeStyle;
-```
-
-- Note que todos os vértices tem ligação entre si, tornando o grafo acima completo. Com um **total de 4 vértices**, têm-se um **total de 4*3/2** arestas, ou **6 arestas**.
-
-
 ## 4.4 Conceitos
 
 ### 4.4.1 Classificação de Vértices
 ---
 - Vértices **"sink"** são aquelas que não possuem arestas **saindo** dele, apenas **chegando**, **3** é um vértice sink.
-- Vértices **"source"** são aqueles que não possuem arestas **chegando** dele, apenas **saindo**, **4** é um vértice source.
+- Vértices **"source"** são aqueles que não possuem arestas **chegando** n'ele, apenas **saindo**, **4** é um vértice source.
 
 ### 4.4.2 Caminho 
 ---
@@ -844,6 +857,40 @@ Exemplo:
 ---
 A noção de **conectividade forte** é aplicada aos **digrafos**. Um grafo direcionado ou dirigido é considerado fortemente conexo se para cada par de vértices (v, w) existe uma aresta de **v para w** e uma aresta de **w para v**.
 
+### 4.4.6 Fecho Transitivo
+O **Fecho Transitivo** de um grafo dirigido é um grafo dirigido com o mesmo conjunto de vértices mas com uma aresta de **s** para **t**, se e somente se, existe um caminho dirigido de **s** à **t** no grafo dirigido.
+
+Diagrama
+
+**Floyd Warshall**
+
+```C
+	void graphtc(Graph *g){
+		int i, s, t;
+		//Inicia uma matriz de adj
+		g->tc = MATRIXinit(g->v, g->v, 0);
+		for(s = 0; s < g->v; s
+			for(t = 0; t < g->v; t++)
+				g->tc[s][t] = g->adj[s][t];
+				
+		//seta a diagonal principal
+		for(s = 0; s < g->v; s++)
+			g->tc[s][s] = 1;
+
+		//Percorre as linhas i e as colunas s
+		for(i = 0; i < g->v; i++)
+			for(s = 0; s < g->v; s++)
+				//Verifica se existe um caminho de s para i
+				if(g->tc[s][i] == i)
+					//Percorre todos os elementos da linha i
+					for(t = 0; t < g->v; t++)
+						//Verifica se há caminho entre i e t
+						if(g->tc[i][t] == 1)
+							//Se sim então também existe caminho de s para t
+							//Cria uma nova aresta
+							g->tc[s][t] = 1;
+	}
+```
 ## 4.5 Structs e algoritmos inicias
 A estrutura básica para representar um grafo é a **Aresta(Edge)**, que simboliza a conexão entre dois **Vértices(Vertex)**, que podem ser abstraídos para um **Item** em questão, que pode ser um `int`, `char` ou qualquer `tipo abstrato` que for definido.
 ```C
@@ -873,7 +920,7 @@ Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de
     typedef struct Graph{
         int numVertex;                          //Guarda o número total de vértices
         int size;                               //Número total de arestas
-        Node *adj;                             //Cabeça da lista
+        Node *adj;                              //Cabeça da lista
     }Graph;
 ```
 
@@ -882,22 +929,22 @@ Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de
 Se assemelha à uma explosão, feita para achar **menores caminhos**. A **BFS** explora todos os vizinhos de um nó antes de avançar para os vizinhos dos vizinhos. O algoritmo usa de uma **Fila** para controlar as ordens de acesso aos vértices. Ela garante que todos os vértices de uma profundidade *d* serão explorados antes de explorar vértices de uma profundidade *d + 1*.
 
 ```C
-    static int cnt, pre[MAX_VERTEX];
+    bool visited[MAX_VERTEX];
 
     void bfs(Graph *G, Edge e)
     {
         int v, w;
         QueuePut(e);
-        pre[e.w] = cnt++;
+        visited[e.w] = true;
 
         while(!QueueEmpty()){
             e = QueueGet();
             w = e.w;
-            for(int *l = G->adj[w]; l != NULL; l =l->next){
+            for(int *l = G->adj[w]; l != NULL; l = l->next){
                 int t = l->vertex;
-                if(pre[t] == -1){
+                if(visited[t] == false){
                     QueuePut(Edge{w, t});
-                    pre[t] = cnt++;
+                    visited[t] = true;
                 }
 
             }
@@ -911,16 +958,16 @@ Explora sempre o caminho mais profundo do grafo antes de retroceder. Faz uso de 
 - Implementação 1 (Bruno Ribas):
 
 ```C
-    static int cnt, pre[MAX_VERTEX];
+    bool visited[MAX_VERTEX] = {false};
 
     void dfsr(Graph *G, Edge e)
     {
         int t, w = e.w;
-        pre[w] = cnt++;
+        visited[w] = true;
 
         for(t = 0; t < G->numVertex; t++)
             if(G -> adj[w][t] != 0)
-                if(pre[t] == -1)
+                if(visited[t] == false)
                     dfsr(G, Edge{w, t});
     }
 ```

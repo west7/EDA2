@@ -2,5 +2,8 @@
   "rightToLeft": false,
   "showLineNumber": true,
   "tabSize": 3,
-  "promptDelete": false
+  "promptDelete": false,
+  "foldIndent": true,
+  "spellcheck": false,
+  "foldHeading": true
 }

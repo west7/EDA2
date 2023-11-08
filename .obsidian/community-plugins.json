@@ -2,5 +2,8 @@
   "fantasy-calendar",
   "settings-search",
   "templater-obsidian",
-  "cmdr"
+  "cmdr",
+  "calendar",
+  "obsidian-excalidraw-plugin",
+  "url-into-selection"
 ]

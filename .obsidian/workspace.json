@@ -8,6 +8,78 @@
         "type": "tabs",
         "children": [
           {
+            "id": "4aad171a9ee30155",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Apostila/Apostila.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0c78482efe042df5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Apostila/FiladePrioridades.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "9acc4c0736c57f54",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Apostila/ÁrvoreRedBlack.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0d5951c9fea65d40",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Apostila/Quickselect.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d1007f3bf9e7ee7f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Apostila/HashTable.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ac440ef9803e86d9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Apostila/FiladePrioridades.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "807c19eac2e33172",
             "type": "leaf",
             "pinned": true,
@@ -19,28 +91,6 @@
                 "source": false
               },
               "pinned": true
-            }
-          },
-          {
-            "id": "c144e08f57a6f618",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "bancoDeProvas/prova-1/2023-1.pdf"
-              }
-            }
-          },
-          {
-            "id": "8d1a97af81e80d20",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "bancoDeProvas/prova-2/prova2.md",
-                "mode": "source",
-                "source": false
-              }
             }
           }
         ]
@@ -72,7 +122,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "calendar",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -109,7 +159,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Apostila/Apostila.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +176,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Apostila/Apostila.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -157,7 +207,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Apostila/Apostila.md"
               }
             }
           },
@@ -166,6 +216,14 @@
             "type": "leaf",
             "state": {
               "type": "FANTASY_CALENDAR",
+              "state": {}
+            }
+          },
+          {
+            "id": "da7d82a1065b915e",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
               "state": {}
             }
           }
@@ -178,25 +236,40 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
       "fantasy-calendar:Open Large Fantasy Calendar": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "807c19eac2e33172",
+  "active": "4aad171a9ee30155",
   "lastOpenFiles": [
-    "bancoDeProvas/prova-1/2023-1.pdf",
-    "listas/lista4-quickSelect.md",
+    "Apostila/Apostila.md",
+    "Apostila/FiladePrioridades.md",
+    "Apostila/ÁrvoreRedBlack.md",
     "README.md",
+    "Apostila/Quickselect.md",
+    "Apostila/Grafos.md",
+    "Apostila/HashTable.md",
+    "README 1.md",
+    "Apostila",
+    "Pasta sem título",
+    "bancoDeProvas/prova-3/2022-1.pdf",
     "bancoDeProvas/prova-2/prova2.md",
+    "bancoDeProvas/prova-3/2023-1.pdf",
+    "listas/lista4-quickSelect.md",
     "bancoDeProvas/prova-2/p22023-1.pdf",
-    "bancoDeProvas/prova-1/2022-1.pdf",
-    "bancoDeProvas/prova-1/2021-2.pdf",
+    "bancoDeProvas/prova-3/2021-2.pdf",
+    "bancoDeProvas/prova-3/2021-1.pdf",
+    "bancoDeProvas/prova-2/2022-1.pdf",
+    "bancoDeProvas/prova-2/2021-2.pdf",
+    "bancoDeProvas/prova-1/2023-1.pdf",
+    "Excalidraw/Drawing 2023-11-06 19.33.11.excalidraw.md",
     "listas/lista1-desenferrujando.md",
     "Untitled.canvas",
     "Untitled.md"
