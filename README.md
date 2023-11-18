@@ -1007,6 +1007,31 @@ Explora sempre o caminho mais profundo do grafo antes de retroceder. Faz uso de 
   - //TODO diagrama
   - //TODO algoritmo
 
+### 4.4.7 Peso nas arestas
+O peso nas arestas pode ser, por exemplo, a distância física entre dois pontos.
+
+```mermaid
+	graph LR;
+	a[Plano Piloto] -->|40 km| b[Taguatinga] -->|20 km| c[Núcleo Bandeirante]
+	a -->|30 km| c
+	c -->|20 km| a
+```
+
+Como implementar peso nas arestas?
+	- Matriz de adj
+	<div align="center">
+| |1|2|3|
+|-|-|-|-|
+|1|0|40|30|
+|2|Infinity|0|20|
+|3|20|Infinity|0|
+
+	</div>
+
+
+**Bellman Ford**
+
+**Dijkstra**
 
 # QuickSelect
 

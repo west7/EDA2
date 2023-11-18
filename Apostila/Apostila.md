@@ -84,7 +84,7 @@ Professor: [Bruno Ribas.](https://www.brunoribas.com.br/)
 	- 1.1.3 Encadeamento Separado
 - 1.2 Bônus - Discussão sobre complexidades
 
-### [Capítulo 2 - Árvore Red Black](obsidian://open?vault=ed2-ribas&file=Apostila%2F%C3%81rvore%20Red%20Black)
+### [Capítulo 2 - Árvore Red Black](obsidian://open?vault=ed2-ribas&file=Apostila%2F%C3%81rvoreRedBlack)
 
 - 2.1 Structs
 - 2.2 Regras da Red Black
@@ -113,7 +113,7 @@ Professor: [Bruno Ribas.](https://www.brunoribas.com.br/)
 - 4.1 Implementação
 	- 4.1.1 Matriz de Adjacência
 	- 4.1.2 Lista de Adjacência
-	- Bônus - Matriz x Lista
+	- 4.1.3 Bônus - Matriz x Lista
 - 4.2 Grafo completo
 - 4.3 Grafos dirigidos ou digrafos
 - 4.4 Conceitos

@@ -4,93 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "ddfee61747cead9e",
+        "id": "63737e02dfb4d99a",
         "type": "tabs",
         "children": [
           {
-            "id": "4aad171a9ee30155",
+            "id": "6a0f59cfea3e6bef",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Apostila/Apostila.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0c78482efe042df5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Apostila/FiladePrioridades.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9acc4c0736c57f54",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Apostila/ÁrvoreRedBlack.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0d5951c9fea65d40",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Apostila/Quickselect.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d1007f3bf9e7ee7f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Apostila/HashTable.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ac440ef9803e86d9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Apostila/FiladePrioridades.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "807c19eac2e33172",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -159,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Apostila/Apostila.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Apostila/Apostila.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -206,9 +126,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Apostila/Apostila.md"
-              }
+              "state": {}
             }
           },
           {
@@ -247,14 +165,14 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "4aad171a9ee30155",
+  "active": "6a0f59cfea3e6bef",
   "lastOpenFiles": [
     "Apostila/Apostila.md",
-    "Apostila/FiladePrioridades.md",
     "Apostila/ÁrvoreRedBlack.md",
     "README.md",
-    "Apostila/Quickselect.md",
     "Apostila/Grafos.md",
+    "Apostila/Quickselect.md",
+    "Apostila/FiladePrioridades.md",
     "Apostila/HashTable.md",
     "README 1.md",
     "Apostila",
