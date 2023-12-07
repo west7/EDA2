@@ -11,8 +11,12 @@
             "id": "6a0f59cfea3e6bef",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "README.md"
+              }
             }
           },
           {
@@ -167,9 +175,11 @@
   },
   "active": "6a0f59cfea3e6bef",
   "lastOpenFiles": [
+    "Excalidraw/Drawing 2023-12-06 18.15.49.excalidraw.md",
+    "README.md",
+    "Excalidraw",
     "Apostila/Apostila.md",
     "Apostila/ÁrvoreRedBlack.md",
-    "README.md",
     "Apostila/Grafos.md",
     "Apostila/Quickselect.md",
     "Apostila/FiladePrioridades.md",
@@ -186,7 +196,6 @@
     "bancoDeProvas/prova-3/2021-1.pdf",
     "bancoDeProvas/prova-2/2022-1.pdf",
     "bancoDeProvas/prova-2/2021-2.pdf",
-    "bancoDeProvas/prova-1/2023-1.pdf",
     "Excalidraw/Drawing 2023-11-06 19.33.11.excalidraw.md",
     "listas/lista1-desenferrujando.md",
     "Untitled.canvas",
