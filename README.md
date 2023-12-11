@@ -5,14 +5,14 @@ Este repositório é dedicado a disciplina de "Estrutura de dados e algoritmos 2
 Professor: [Bruno Ribas.](https://www.brunoribas.com.br/)
 
 ---
-# [[Sumário|Sumário da Apostila]]
-### [[HashTable|Capítulo 1 - Hash Table]]
+# [Sumário da Apostila](/Apostila/Sumário.md)
+### [Capítulo 1 - Hash Table](/Apostila/HashTable.md)
 
-- 1.1 [[HashTable#^292ad7|Colisões]]
-	- 1.1.1 [[HashTable#^086ebf|Endereçamento aberto]]
-	- 1.1.2 [[HashTable#^d91215|Double Hash]]
-	- 1.1.3 [[HashTable#^51012d|Encadeamento Separado]]
-- 1.2 [[HashTable#^1b47f6|Bônus - Discussão sobre complexidades]]
+- 1.1 [Colisões](/Apostila/HashTable.md#11-colisões)
+	- 1.1.1 [Endereçamento aberto](/Apostila/HashTable.md#111-endereçamento-aberto)
+	- 1.1.2 [Double Hash](/Apostila/HashTable.md#112-double-hash)
+	- 1.1.3 [Encadeamento Separado](/Apostila/HashTable.md#113-encadeamento-separado)
+- 1.2 [Bônus - Discussão sobre complexidades](/Apostila/HashTable.md#12-bônus---discussão-sobre-complexidades)
 ### [[ÁrvoreRedBlack|Capítulo 2 - Árvore Red Black]]
 
 - 2.1 [[ÁrvoreRedBlack#^b7bf42|Structs]]
