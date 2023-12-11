@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Apostila/Sumário.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Apostila/Sumário.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Apostila/Sumário.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Apostila/Sumário.md"
               }
             }
           }
@@ -148,13 +148,14 @@
   },
   "active": "dc3fb2393d168cc7",
   "lastOpenFiles": [
-    "Apostila/Sumário.md",
     "README.md",
+    "Apostila/ÁrvoreRedBlack.md",
     "Apostila/HashTable.md",
+    "Apostila/Sumário.md",
+    "á.md",
     "Apostila/Quickselect.md",
     "Apostila/Grafos.md",
     "Apostila/FiladePrioridades.md",
-    "Apostila/ÁrvoreRedBlack.md",
     "bancoDeProvas/assets/image-3.png",
     "bancoDeProvas/assets/image-2.png",
     "bancoDeProvas/assets/image.png",
