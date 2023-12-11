@@ -1,9 +1,11 @@
-voltar para [apostila.](obsidian://open?vault=ed2-ribas&file=Apostila%2FApostila)
+voltar para [[Sumário|sumário]].
 # 2. Árvore Red Black
 
 Árvores Red Black são estruturas de árvores binárias de busca modificadas, para ficarem constantemente balanceadas, evitando o problema das árvores convencionais, que dependendo da ordem de inserção podem ficar com complexidade linear (O(n)) em vez de complexidade logarítmica (O(log n)), perdendo toda a razão de usar árvores e não outras estruturas. Cada nó da árvore tem uma cor, <b>vermelha ou preta</b>, e essas cores são usadas para aplicar as regras que garantem o balanceamento da árvore. Não admite chaves repetidas (tabela de símbolos).
 
 ## 2.1 Structs
+
+^b7bf42
 
 ```C
 typedef struct Node{
@@ -18,6 +20,8 @@ typedef struct Tree{
 }Tree;
 ```
 ## 2.2 Regras da RedBlack
+
+^698f49
 
 Os nós podem ser do tipo acima. Todo novo nó inserido é inserido com vermelho. E as seguintes regras têm de sempre ser seguidas:
 <b>
@@ -38,6 +42,8 @@ Os nós podem ser do tipo acima. Todo novo nó inserido é inserido com vermelho
 ---
 
 ### 2.2.1 Algoritmos de balanceamento
+
+^b503dc
 
 ```C
     void flipColors(Node *root){
@@ -70,6 +76,8 @@ Os nós podem ser do tipo acima. Todo novo nó inserido é inserido com vermelho
 
 ```
 ### 2.2.2 Inserções em Árvore Red Black
+
+^d4e3a3
 
 
 - Exemplo de inserção em uma RedBlack com a seguinte sequência: 10, 15, 5, 3, 2, 20, 25, 30, 20.
@@ -145,6 +153,8 @@ graph TD;
 
 ### 2.2.3 Algoritmos de Inserção
 
+^abf4dd
+
 ```C
     bool isRed(Node *n)
     {
@@ -197,9 +207,15 @@ graph TD;
 ```
 
 ## 2.3 Alturas de uma Red Black
+
+^391783
+
 Em suma existem dois tipos de altura associadas à uma árvore red black, que são a **Altura total** e a **Altura Negra**.
 
 ### 2.3.1 Altura Total
+
+^2e3b70
+
 A altura total refere-se à distância de qualquer nó folha até a raiz da árvore.
 
 #### Funções:
@@ -233,6 +249,9 @@ A altura total refere-se à distância de qualquer nó folha até a raiz da árv
 ```
 
 ### 2.3.2 Altura Negra
+
+^599d25
+
 Altura Negra refere-se à distância de um nó folha **preto** até a raiz.
 
 #### Função:
@@ -253,6 +272,9 @@ Altura Negra refere-se à distância de um nó folha **preto** até a raiz.
 ```
 
 ## 2.4 Bônus - Árvore 2-3
+
+^537ada
+
 Árvores 2-3 são estruturas similares a as árvores red black. Também são constantemente balanceadas (altura = log n). Contém nós de 3 tipos, sendo um deles do tipo **"fantasma"**.
 
 1. Tipo 2: dois filhos (contém apenas 1 elemento);

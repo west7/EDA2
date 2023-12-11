@@ -1,4 +1,4 @@
-voltar para [apostila.](obsidian://open?vault=ed2-ribas&file=Apostila%2FApostila)
+voltar para [[Sumário|sumário]].
 # 3. Fila de Prioridades
 A Fila de Prioridades ou Heap, é uma estrutura que organiza os elementos com base em um valor que é definido como prioridade. Dispondo os elementos tal que, o de maior prioridade sempre estará no topo da fila, admite chaves reptidas, ou seja, com a **mesma prioridade**. Ela é representada como uma árvore binária em vetor, no qual **o índice zero fica inutilizado**, e os **filhos de um elemento k**, são, respectivamente, **2k e 2k + 1**, Reciprocamente o pai de qualquer elemento **k** é **k/2**.
 
@@ -68,13 +68,23 @@ E assim sucessivamente.
 
 ## 3.1 Conceitos
 
+^50b0d5
+
 ### 3.1.1 Fila de prioridades crescente e decrescente (Min Heap e Max Heap)
+
+^22868c
+
 Na **heap crescente** o elemento de **menor prioridade** está no topo da fila, conforme se move para baixo a prioridade dos elementos aumentam. Na **heap decrescente** o elemento de **maior prioridade** está no topo da fila, conforme se move para baixo a prioridade dos elementos diminuem.
 
 ### 3.1.2 Item máximo e item mínimo
+
+^b17dfd
+
 Um item **K** é máximo se nenhum item é estritamente **maior** que **K**. Um item **K** é mínimo se nenhum item é estritamente **menor** que **K**. Podem existir mais de um item máximo e mais de um item mínimo.
 
 ### 3.1.3 Complexidades
+
+^06e906
 
 |                    | Inserção | Remoção  | Consulta |
 | ------------------ | -------- | -------- | -------- |
@@ -83,7 +93,11 @@ Um item **K** é máximo se nenhum item é estritamente **maior** que **K**. Um 
 
 ## 3.2 Algoritmos
 
+^d7ebdb
+
 ### 3.2.1 Struct e macros
+
+^9f92d1
 
 ```C
     #define less(a,b) (a < b)
@@ -104,6 +118,9 @@ Um item **K** é máximo se nenhum item é estritamente **maior** que **K**. Um 
 >Obs: "Item" pode ser de qualquer tipo: int, char, tipos abstratos, etc... 
 
 ### 3.2.2 Conserta para cima (swim)
+
+^974dda
+
 Suponha que em algum momento estejamos com a seguinte Heap crescente "estragada":
 
 > Obs: quanto mais próximo do fim do alfabeto, maior a prioridade
@@ -163,6 +180,8 @@ Função "Conserta para cima" ou **fixup**:
 
 ### 3.2.3 Conserta para baixo (sink)
 
+^296bc2
+
 Suponha que em algum momento estejamos com a seguinte Heap decrescente "estragada":
 
 > Obs: quanto mais próximo do fim do alfabeto, maior a prioridade
@@ -218,6 +237,8 @@ Função "Conserta para baixo" ou **fixdown**:
 
 
 ### 3.2.4 Inserção, remoção e consulta
+
+^13a881
 
 ```C
     Heap PQinit(int n)
