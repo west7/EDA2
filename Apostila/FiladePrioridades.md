@@ -1,4 +1,5 @@
-voltar para [[Sumário|sumário]].
+voltar para [Sumário](/Apostila/Sumário.md).
+
 # 3. Fila de Prioridades
 A Fila de Prioridades ou Heap, é uma estrutura que organiza os elementos com base em um valor que é definido como prioridade. Dispondo os elementos tal que, o de maior prioridade sempre estará no topo da fila, admite chaves reptidas, ou seja, com a **mesma prioridade**. Ela é representada como uma árvore binária em vetor, no qual **o índice zero fica inutilizado**, e os **filhos de um elemento k**, são, respectivamente, **2k e 2k + 1**, Reciprocamente o pai de qualquer elemento **k** é **k/2**.
 

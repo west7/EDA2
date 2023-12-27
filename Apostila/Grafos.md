@@ -1,4 +1,5 @@
-voltar para [[Sumário|sumário]].
+voltar para [Sumário](/Apostila/Sumário.md).
+
 # 4. Grafos
 
 Grafos são estruturas de dados amplamente utilizadas na computação. São uma ótima maneira de representar relacionamentos entre elementos, como por exemplo: mapas, redes, encanação, aeroportos, etc. Podem ser representados graficamente como um conjunto de vértices e arestas.
@@ -406,21 +407,90 @@ Imagine um grafo dirigido ponderado, o ***caminho*** de um vértice *v* até um 
 
 O problema faz sentido, para pesos **positivos e negativos**, porém vamos focar nos positivos primeiro.
 #### 4.8.1.1 Dijkstra    
-
 ^86749a
-
 ---
 O algoritmo de Dijkstra é um algoritmo clássico de **caminho mínimo**, para encontrar o caminho mais curto de um nó de origem para todos os outros nós de um **grafo ponderado** com arestas de **peso não negativo**. 
 
+```C
+void Dijkstra(Graph *g, int start)
+{
+    for (int i = 0; i < g->numVertex; i++)
+        pa[i] = -1, dist[i] = INFINITY, visited[i] = false;
 
+    pa[start] = start, dist[start] = 0;
+
+    Heap h = PQInit(g->numVertex);
+
+    for(int i = 0; i < g->numVertex; i++)
+        PQInsert(h, i, dist[i]);
+
+    while(!PQEmpty(h))
+    {
+        int y = PQPop(h);
+        if(dist[y] == INFINITY) break;
+
+        for(Edge e = g->edges[y]; e != NULL; e = e.next)
+        {
+            if (visited[e.w]) continue;
+            if (dist[y] + e.weight < dist[e.w])
+            {
+                dist[e.w] = dist[y] + e.weight;
+                PQChange(h, e.w, dist[e.w]);
+                pa[e.w] = y;
+            }
+            visited[y] = true;
+        }
+    } 
+    PQFree(h);
+}
+```
+
+**Complexidade:** O(E log V) 
 
 #### 4.8.1.2 Bellman Ford
-
 ^1223b8
-
 ---
 
+Assim como o Algoritmo de Dijkstra, o Alogritmo de Bellam Ford, surge para solucionar o problema de menor caminho em um grafo ponderado, porém, diferente do Dijkstra, este algoritmo não se limita apenas a grafos ponderados de arestas não negativas, ele também funciona para arestas de **pesos negativos**.
 
+```C
+bool BellmanFord(Graph g, vertex s, vertex *pa, int *dist)
+{
+   PQInit(g->numEdges);
+   bool visited[1000];
+   for (vertex u = 0; u < g->numVertex; ++u)
+      pa[u] = -1, dist[u] = INFINITY, visited[u] = false;
+   pa[s] = s, dist[s] = 0;
+
+   PQInsert( s);
+   visited[s] = true;
+   vertex V = g->V; 
+   PQInsert(V); 
+   int k = 0;
+
+   while (true) { 
+      vertex v = PQPop( );
+      if (v < V) {
+         for (link a = g->adj[v]; a != NULL; a = a->next) {
+            if (dist[v] + a->c < dist[a->w]) {
+               dist[a->w] = dist[v] + a->c; 
+               pa[a->w] = v;
+               if (visited[a->w] == false) {
+                  PQInsert( a->w);
+                  visited[a->w] = true;
+               }
+            }
+         }
+      } else {
+         if (PQEmpty()) return true; 
+         if (++k >= g->V) return false;
+         PQInsert(V); 
+         for (vertex u = 0; u < g->V; ++u) 
+            visited[u] = false;
+      }
+   }
+}
+```
 
 ### Problema das árvores geradoras e árvores geradoras de custo mínimo (MST)
 

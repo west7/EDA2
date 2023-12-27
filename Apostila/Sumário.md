@@ -1,60 +1,59 @@
-voltar para o [[README]].
-### [[HashTable|Capítulo 1 - Hash Table]]
+voltar para o [README](/README.md).
 
-- 1.1 [[HashTable#^292ad7|Colisões]]
-	- 1.1.1 [[HashTable#^086ebf|Endereçamento aberto]]
-	- 1.1.2 [[HashTable#^d91215|Double Hash]]
-	- 1.1.3 [[HashTable#^51012d|Encadeamento Separado]]
-- 1.2 [[HashTable#^1b47f6|Bônus - Discussão sobre complexidades]]
+### [Capítulo 1 - Hash Table](/Apostila/HashTable.md)
 
-### [[ÁrvoreRedBlack|Capítulo 2 - Árvore Red Black]]
+- 1.1 [Colisões](/Apostila/HashTable.md#11-colisões)
+	- 1.1.1 [Endereçamento aberto](/Apostila/HashTable.md#111-endereçamento-aberto)
+	- 1.1.2 [Double Hash](/Apostila/HashTable.md#112-double-hash)
+	- 1.1.3 [Encadeamento Separado](/Apostila/HashTable.md#113-encadeamento-separado)
+- 1.2 [Bônus - Discussão sobre complexidades](/Apostila/HashTable.md#12-bônus---discussão-sobre-complexidades)
+### [Capítulo 2 - Árvore Red Black](/Apostila/ÁrvoreRedBlack.md)
 
-- 2.1 [[ÁrvoreRedBlack#^b7bf42|Structs]]
-- 2.2 [[ÁrvoreRedBlack#^698f49|Regras da Red Black]]
-	- 2.2.1 [[ÁrvoreRedBlack#^b503dc|Algoritmos de Balanceamento]]
-	- 2.2.2 [[ÁrvoreRedBlack#^d4e3a3|Inserções em Árvore Red Black]]
-	- 2.2.3 [[ÁrvoreRedBlack#^abf4dd|Algoritmos de inserção]]
-- 2.3 [[ÁrvoreRedBlack#^391783|Alturas de uma Red Black]]
-	- 2.3.1 [[ÁrvoreRedBlack#^2e3b70|Altura total]]
-	- 2.3.2 [[ÁrvoreRedBlack#^599d25|Altura Negra]]
-- 2.4 [[ÁrvoreRedBlack#^537ada|Bônus - Árvore 2-3]]
+- 2.1 [Structs](Apostila/ÁrvoreRedBlack.md#21-structs)
+- 2.2 [Regras da Red Black](/Apostila/ÁrvoreRedBlack.md#22-regras-da-redblack)
+	- 2.2.1 [Algoritmos de Balanceamento](/Apostila/ÁrvoreRedBlack.md#221-algoritmos-de-balanceamento)
+	- 2.2.2 [Inserções em Árvore Red Black](/Apostila/ÁrvoreRedBlack.md#222-inserções-em-árvore-red-black)
+	- 2.2.3 [Algoritmos de inserção](/Apostila/ÁrvoreRedBlack.md#223-algoritmos-de-inserção)
+- 2.3 [Alturas de uma Red Black](/Apostila/ÁrvoreRedBlack.md#23-alturas-de-uma-red-black)
+	- 2.3.1 [Altura total](/Apostila/ÁrvoreRedBlack.md#231-altura-total)
+	- 2.3.2 [Altura Negra](/Apostila/ÁrvoreRedBlack.md#232-altura-negra)
+- 2.4 [Bônus - Árvore 2-3](/Apostila/ÁrvoreRedBlack.md#24-bônus---árvore-2-3)
 
-### [[FiladePrioridades|Capítulo 3 - Fila de Prioridades]]
+### [Capítulo 3 - Fila de Prioridades](/Apostila/FiladePrioridades.md)
 
-- 3.1 [[FiladePrioridades#^50b0d5|Conceitos]]
-	- 3.1.1 [[FiladePrioridades#^22868c|Fila de Prioridades crescente e decrescente (Min heap e Max Heap)]]
-	- 3.1.2 [[FiladePrioridades#^b17dfd|Item mínimo e item máximo]]
-	- 3.1.3 [[FiladePrioridades#^06e906|Complexidades]]
-- 3.2 [[FiladePrioridades#^d7ebdb|Algoritmos]]
-	- 3.2.1 [[FiladePrioridades#^9f92d1|Structs e macros]]
-	- 3.2.2 [[FiladePrioridades#^974dda|Conserta para cima (swim)]]
-	- 3.2.3 [[FiladePrioridades#^296bc2|Conserta para baixo (sink)]]
-	- 3.2.4 [[FiladePrioridades#^13a881|Inserção, remoção e consulta]]
+- 3.1 [Conceitos](/Apostila/FiladePrioridades.md#31-conceitos)
+	- 3.1.1 [Fila de Prioridades crescente e decrescente (Min heap e Max Heap)](/Apostila/FiladePrioridades.md#311-fila-de-prioridades-crescente-e-decrescente-min-heap-e-max-heap)
+	- 3.1.2 [Item mínimo e item máximo](/Apostila/FiladePrioridades.md#312-item-máximo-e-item-mínimo)
+	- 3.1.3 [Complexidades](/Apostila/FiladePrioridades.md#313-complexidades)
+- 3.2 [Algoritmos](/Apostila/FiladePrioridades.md#32-algoritmos)
+	- 3.2.1 [Structs e macros](/Apostila/FiladePrioridades.md#321-struct-e-macros)
+	- 3.2.2 [Conserta para cima (swim)](/Apostila/FiladePrioridades.md#322-conserta-para-cima-swim)
+	- 3.2.3 [Conserta para baixo (sink)](/Apostila/FiladePrioridades.md#323-conserta-para-baixo-sink)
+	- 3.2.4 [Inserção, remoção e consulta](/Apostila/FiladePrioridades.md#324-inserção-remoção-e-consulta)
+### [Capítulo 4 - Grafos](/Apostila/Grafos.md)
 
-### [[Grafos|Capítulo 4 - Grafos]]
-
-- 4.1 [[Grafos#^9aeca3|Implementação]]
-	- 4.1.1 [[Grafos#^04b349|Matriz de Adjacência]]
-	- 4.1.2 [[Grafos#^9d9dfc|Lista de Adjacência]]
-	- 4.1.3 [[Grafos#^98ef13|Bônus - Matriz x Lista]]
-- 4.2 [[Grafos#^d80518|Grafo completo]]
-- 4.3 [[Grafos#^588af1|Grafos dirigidos ou digrafos]]
-- 4.4 [[Grafos#^0d5e07|Conceitos]]
-	- 4.4.1 [[Grafos#^c68385|Classificação de vértices]]
-	- 4.4.2 [[Grafos#^db371e|Caminho]]
-	- 4.4.3 [[Grafos#^0bc81e|Conectividade]]
-	- 4.4.4 [[Grafos#^8e978b|Grafos dirigidos conexos acíclicos]]
-	- 4.4.5 [[Grafos#^e1bc5d|Grafo dirigido fortemente conexo]]
-	- 4.4.6 [[Grafos#^49d95f|Fecho Transitivo]]
-- 4.5 [[Grafos#^b91afd|Structs e algoritmos iniciais]]
-- 4.6 [[Grafos#^f2692b|Busca em Largura (BFS)]]
-- 4.7 [[Grafos#^d15575|Busca em Profundidade (DFS)]]
-- 4.8 [[Grafos#^c3f515|Problemas Clássicos e Algoritmos Fundamentais]]
-	- 4.8.1 [[Grafos#^a221db|Problema do Menor caminho]]
-		- 4.8.1.1 [[Grafos#^86749a|Dijkstra]]
-		- 4.8.1.2 [[Grafos#^1223b8|BellmanFord]]
-	- 4.8.2 [[Grafos#^407139|Problema das árvores geradoras e árvores geradoras de custo mínimo (MST)]]
-		- 4.8.2.1 [[Grafos#^c19080|Prim]]
-		- 4.8.2.2 [[Grafos#^154fd1|Kruskal]]
-
-### [[Quickselect|Capítulo 5 - Quickselect]]
+- 4.1 [Implementação](/Apostila/Grafos.md#41-implementação)
+	- 4.1.1 [Matriz de Adjacência](/Apostila/Grafos.md#411-matriz-de-adjacência)
+	- 4.1.2 [Lista de Adjacência](/Apostila/Grafos.md#412-lista-de-adjacência)
+	- 4.1.3 [Bônus - Matriz x Lista](/Apostila/Grafos.md#413-bônus---matriz-x-lista)
+- 4.2 [Grafo completo](/Apostila/Grafos.md#42-grafo-completo)
+- 4.3 [Grafos dirigidos ou digrafos](/Apostila/Grafos.md#43-grafos-dirigidos-ou-digrafos)
+- 4.4 [Conceitos](/Apostila/Grafos.md#44-conceitos)
+	- 4.4.1 [Classificação de vértices](/Apostila/Grafos.md#441-classificação-de-vértices)
+	- 4.4.2 [Caminho](/Apostila/Grafos.md#442-caminho)
+	- 4.4.3 [Conectividade](/Apostila/Grafos.md#443-conectividade)
+	- 4.4.4 [Grafos dirigidos conexos acíclicos](/Apostila/Grafos.md#444-grafos-dirigidos-conexos-acíclicos)
+	- 4.4.5 [Grafo dirigido fortemente conexo](/Apostila/Grafos.md#445-grafo-dirigido-fortemente-conexo)
+	- 4.4.6 [Fecho Transitivo](/Apostila/Grafos.md#446-fecho-transitivo)
+	- 4.4.7 [Grafos ponderados(peso nas arestas)](/Apostila/Grafos.md#447-grafos-ponderados-peso-nas-arestas)
+- 4.5 [Structs e algoritmos iniciais](/Apostila/Grafos.md#45-structs-e-algoritmos-inicias)
+- 4.6 [Busca em Largura (BFS)](/Apostila/Grafos.md#46-busca-em-largura-bfs)
+- 4.7 [Busca em Profundidade (DFS)](/Apostila/Grafos.md#47-busca-em-profundidade-dfs)
+- 4.8 [Problemas Clássicos e Algoritmos Fundamentais](/Apostila/Grafos.md#48-problemas-clássicos-e-algoritmos-fundamentais)
+	- 4.8.1 [Problema do Menor caminho](/Apostila/Grafos.md#481-problema-do-menor-caminho)
+		- 4.8.1.1 [Dijkstra](/Apostila/Grafos.md#4811-dijkstra)
+		- 4.8.1.2 [BellmanFord](/Apostila/Grafos.md#4812-bellman-ford)
+	- 4.8.2 [Problema das árvores geradoras e árvores geradoras de custo mínimo (MST)](/Apostila/Grafos.md#problema-das-árvores-geradoras-e-árvores-geradoras-de-custo-mínimo-mst)
+		- 4.8.2.1 [Prim](/Apostila/Grafos.md#4821-prim)
+		- 4.8.2.2 [Kruskal](/Apostila/Grafos.md#4822-kruskal)
+### [Capítulo 5 - Quickselect](/Apostila/Quickselect.md)

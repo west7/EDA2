@@ -6,5 +6,7 @@
   "foldIndent": true,
   "spellcheck": false,
   "foldHeading": true,
-  "useMarkdownLinks": true
+  "useMarkdownLinks": true,
+  "newFileLocation": "current",
+  "alwaysUpdateLinks": true
 }

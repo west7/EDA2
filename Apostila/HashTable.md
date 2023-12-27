@@ -1,4 +1,5 @@
-voltar para [[Sumário|sumário]].
+voltar para [Sumário](/Apostila/Sumário.md).
+
 # 1. Hash Table
 É uma estrutura do tipo chave-valor, onde as chaves são usadas como índice para achar o elemento desejado, não admite chaves repetidas (tabela de símbolos). A chave é passada por uma função (normalmente o módulo) onde é gerado o índice/endereço na tabela. Esta função tem caráter determinístico ou seja, uma mesma chave sempre gera um mesmo endereço. Dessa forma é possível acessar qualquer elemento da tabela em grandeza constante O(1).
 
