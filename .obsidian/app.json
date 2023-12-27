@@ -5,5 +5,8 @@
   "promptDelete": false,
   "foldIndent": true,
   "spellcheck": false,
-  "foldHeading": true
+  "foldHeading": true,
+  "useMarkdownLinks": true,
+  "newFileLocation": "current",
+  "alwaysUpdateLinks": true
 }

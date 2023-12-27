@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "63737e02dfb4d99a",
+        "id": "9bac6a70f0ea5401",
         "type": "tabs",
         "children": [
           {
-            "id": "6a0f59cfea3e6bef",
+            "id": "dc3fb2393d168cc7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Apostila/Grafos.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Apostila/Grafos.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Apostila/Grafos.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -120,41 +120,17 @@
             }
           },
           {
-            "id": "77ffdce8cbae42fb",
-            "type": "leaf",
-            "state": {
-              "type": "FANTASY_CALENDAR",
-              "state": {}
-            }
-          },
-          {
             "id": "522bc305b786a915",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Apostila/Grafos.md"
               }
-            }
-          },
-          {
-            "id": "58c70ebffb30c03d",
-            "type": "leaf",
-            "state": {
-              "type": "FANTASY_CALENDAR",
-              "state": {}
-            }
-          },
-          {
-            "id": "da7d82a1065b915e",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {}
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -167,28 +143,32 @@
       "canvas:Criar novo canvas": false,
       "daily-notes:Abrir a nota de hoje": false,
       "templates:Inserir modelo": false,
-      "command-palette:Abrir paleta de comandos": false,
-      "fantasy-calendar:Open Large Fantasy Calendar": false,
-      "templater-obsidian:Templater": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false
+      "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "6a0f59cfea3e6bef",
+  "active": "dc3fb2393d168cc7",
   "lastOpenFiles": [
-    "Excalidraw/Drawing 2023-12-06 18.15.49.excalidraw.md",
     "README.md",
-    "Excalidraw",
-    "Apostila/Apostila.md",
     "Apostila/ÁrvoreRedBlack.md",
-    "Apostila/Grafos.md",
-    "Apostila/Quickselect.md",
-    "Apostila/FiladePrioridades.md",
+    "trabalho-final/MicroMouse-2023.2/README.md",
     "Apostila/HashTable.md",
+    "Apostila/Sumário.md",
+    "á.md",
+    "Apostila/Quickselect.md",
+    "Apostila/Grafos.md",
+    "Apostila/FiladePrioridades.md",
+    "bancoDeProvas/assets/image-3.png",
+    "bancoDeProvas/assets/image-2.png",
+    "bancoDeProvas/assets/image.png",
+    "bancoDeProvas/prova-2/prova2.md",
+    "Arv.md",
+    "listas/lista2-hashing.md",
+    "Excalidraw/Drawing 2023-12-06 18.15.49.excalidraw.md",
+    "Excalidraw",
     "README 1.md",
     "Apostila",
     "Pasta sem título",
     "bancoDeProvas/prova-3/2022-1.pdf",
-    "bancoDeProvas/prova-2/prova2.md",
     "bancoDeProvas/prova-3/2023-1.pdf",
     "listas/lista4-quickSelect.md",
     "bancoDeProvas/prova-2/p22023-1.pdf",
