@@ -91,7 +91,7 @@ A primeira lista é voltada para revisão e familiarização com o formato das l
 ---
 ## [Lista II - hashing](listas/lista2-hashing/)
 
-A segunda lista tinha o objetivo de resolver exercícios relacionados à [Hash Table](/apostila/HashTable.md).
+A segunda lista tinha o objetivo de resolver exercícios relacionados à [Hash Table](apostila/HashTable.md).
 
 - A : [Desfile dos Patos](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-hash/desfile.pdf)
 - B : [Diga-me a frequência](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-hash/digafrequencia.pdf)
@@ -104,7 +104,7 @@ A segunda lista tinha o objetivo de resolver exercícios relacionados à [Hash T
 ---
 ## [Listas III - Priority Queue](listas/lista3-priorityQueue/)
 
-A terceira lista contém exercícios de [Heap](/apostila/FiladePrioridades.md).
+A terceira lista contém exercícios de [Heap](apostila/FiladePrioridades.md).
 
 - A : [Menores Placas](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-pq/menores-placas.pdf)
 - B : [Churrascarias da Avenida](https://br.spoj.com/problems/CHURRASC.pdf)
@@ -113,7 +113,7 @@ A terceira lista contém exercícios de [Heap](/apostila/FiladePrioridades.md).
 
 ## [Lista IV - QuickSelect](listas/lista4-quickSelect/)
 
-A quarta lista tem como enfoque o algoritmo [Quickselect](/apostila/Quickselect.md), um algoritmo de busca baseado no algoritmo de ordenação QuickSort
+A quarta lista tem como enfoque o algoritmo [Quickselect](apostila/Quickselect.md), um algoritmo de busca baseado no algoritmo de ordenação QuickSort
 
 - A : [Classificados de Sementes](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-quickselect/classificado-agronomia.pdf)
 - B : [kk-página](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-quickselect/kk-pagina.pdf)
@@ -123,7 +123,7 @@ A quarta lista tem como enfoque o algoritmo [Quickselect](/apostila/Quickselect.
 
 ## [Lista V - Grafos, o início](listas/lista5-grafos/)
 
-A quinta lista introduz os conceitos e algoritmos básicos de [Grafos](/apostila/Grafos.md).
+A quinta lista introduz os conceitos e algoritmos básicos de [Grafos](apostila/Grafos.md).
 
 - A : [Eu vou estar lá!](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos/euvouestarla.pdf)
 - B : [Estradas asfaltadas](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos/grafo-nucleos-cidades.pdf)
@@ -134,7 +134,7 @@ A quinta lista introduz os conceitos e algoritmos básicos de [Grafos](/apostila
 
 ## [Lista VI - Busca em Grafos](/listas/listas6-buscasEmGrafos)
 
-A sexta lista coloca em prática alguns dos algoritmos fundamentais de [Grafos](/apostila/Grafos.md), como o [Algoritmo de Dijkstra](/apostila/Grafos.md#4811-dijkstra) e o [Algoritmo de BellmanFord](/apostila/Grafos.md#4812-bellman-ford).
+A sexta lista coloca em prática alguns dos algoritmos fundamentais de [Grafos](apostila/Grafos.md), como o [Algoritmo de Dijkstra](apostila/Grafos.md#4811-dijkstra) e o [Algoritmo de BellmanFord](apostila/Grafos.md#4812-bellman-ford).
 
 - A: [Estradas asfaltadas - perguntando conexões](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos-busca/grafo-nlogonia-conexoes.pdf)
 - B: [Cai fora LAG](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos-busca/grafo-chp.pdf)
