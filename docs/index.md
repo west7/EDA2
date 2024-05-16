@@ -24,7 +24,7 @@
 
 - 3.1 [Conceitos](apostila/FiladePrioridades.md#31-conceitos)
 	- 3.1.1 [Fila de Prioridades crescente e decrescente (Min heap e Max Heap)](apostila/FiladePrioridades.md#311-fila-de-prioridades-crescente-e-decrescente-min-heap-e-max-heap)
-	- 3.1.2 [Item mínimo e item máximo](apostila/FiladePrioridades.md#312-item-máximo-e-item-mínimo)
+	- 3.1.2 [Item mínimo e item máximo](apostila/FiladePrioridades.md#312-item-maximo-e-item-minimo)
 	- 3.1.3 [Complexidades](apostila/FiladePrioridades.md#313-complexidades)
 - 3.2 [Algoritmos](apostila/FiladePrioridades.md#32-algoritmos)
 	- 3.2.1 [Structs e macros](apostila/FiladePrioridades.md#321-struct-e-macros)
