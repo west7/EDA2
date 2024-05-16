@@ -1,4 +1,3 @@
-voltar para o [README](/README.md).
 
 ### [Capítulo 1 - Hash Table](/Apostila/HashTable.md)
 
