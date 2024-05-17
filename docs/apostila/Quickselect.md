@@ -1,4 +1,3 @@
-voltar para [Sumário](/Apostila/Sumário.md).
 
 # QuickSelect
 

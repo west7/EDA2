@@ -9,23 +9,20 @@ site_description: Site destinado à documentação da apostila de estrutura de d
 nav:
   - Início:
     - Sumário: index.md
+  - Apostila:
     - Hash Table: apostila/HashTable.md
     - Árvore Red Black: apostila/ÁrvoreRedBlack.md
     - Fila de Prioridades: apostila/FiladePrioridades.md
     - Grafos: apostila/Grafos.md
     - Quickselect: apostila/Quickselect.md
+  - Listas:
+    - Lista 1: exec/01_desenferrujando.md
+    - Lista 2: exec/02_hashing.md
+    - Lista 3: exec/03_priority_queue.md
+    - Lista 4: exec/04_quickselect.md
+    - Lista 5: exec/05_grafos.md
+    - Lista 6: exec/06_busca_em_grafos.md
 
-
-theme:
-  name: material
-  features:
-    - navigation.instant
-    - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.top
-    - navigation.footer
-  palette:
 theme:
   name: material
   features:
@@ -41,19 +38,23 @@ theme:
         icon: material/weather-night
         name: Mudar para o modo escuro
       primary: black
-      accent: red
+      accent: deep purple
 
     - scheme: slate
       toggle:
         icon: material/weather-sunny
         name: Mudar para o modo claro
       primary: black
-      accent: red
+      accent: deep purple
   language: pt-BR
+  
+extra_css:
+  - style/style.css
+
 
 plugins:
   - search
-  - mermaid2
+  - include-markdown
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -67,8 +68,16 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.mark
   - attr_list
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format
 
-       
+        
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
 
+extra:
+  social: 
 

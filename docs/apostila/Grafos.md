@@ -13,7 +13,7 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
 
 - Imagine o seguinte grafo:
 
-
+<div align="center">
 ```mermaid
     graph LR;
     0 --- 1 & 2
@@ -21,10 +21,10 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
     2 --- 3
     4
 
-    classDef myNodeStyle fill:#fff, stroke-width: 1px, rx: 10px, ry: 10px;
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4 myNodeStyle;
 ```
-
+</div>
 
 - Sua respectiva matriz de adjacência poderia ser representada da seguinte maneira:
 
@@ -74,6 +74,8 @@ Apresentadas ambas estratégias, podemos definir algumas vantagens e desvantagen
 
 Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta para cada outro vértice no grafo. Totalizando o de máximo v*(v-1)/2 arestas, onde 'v' é o número de vértices.
 
+<div align="center">
+
 ```mermaid
     graph LR;
     0 --- 1 & 2 & 3
@@ -81,9 +83,10 @@ Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta 
     1 --- 2 & 3
 
 
-    classDef myNodeStyle fill:#fff, stroke-width: 1px, rx: 10px, ry: 10px;
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4 myNodeStyle;
 ```
+</div>
 
 - Note que todos os vértices tem ligação entre si, tornando o grafo acima completo. Com um **total de 4 vértices**, têm-se um **total de 4*3/2** arestas, ou **6 arestas**.
 
@@ -91,6 +94,7 @@ Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta 
 
 São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta de '0' para '1', não necessariamente tenho uma aresta de '1' para '0'.
 
+<div align="center">
 ```mermaid
     graph LR;
     4 --> 0 & 1
@@ -100,9 +104,10 @@ São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta
     0 --> 3
 
 
-    classDef myNodeStyle fill:#fff, stroke-width: 1px, rx: 10px, ry: 10px;
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4 myNodeStyle;
 ```
+</div>
 
 - Há um fluxo entre os vértices, a partir do "0" consigo alcançar qualquer vértice, porém a partir do "3" não consigo atingir nenhum outro vértice.
 
@@ -124,15 +129,18 @@ Caminho em grafos é a **sequência de vértices** em que cada vértice **sucess
 
 Exemplo:
 
+<div align="center">
+
 ```mermaid
     graph LR;
     0 --- 1
     1 --- 2
     2 --- 0
 
-    classDef myNodeStyle fill:#fff, stroke-width: 1px, rx: 10px, ry: 10px;
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4 myNodeStyle;
 ```
+</div>
 
 - **Caminho mínimo** -   O caminho mínimo entre dois vértices é o caminho mais curto em termos de custo, peso ou distância. Isso é frequentemente usado em problemas de otimização, como encontrar a rota mais curta em um sistema de transporte.
 
@@ -142,19 +150,22 @@ Exemplo:
 
 Exemplo:
 
+<div align="center">
+
 ```mermaid
     graph LR;
     0 --- 1
     1 --- 2
     2 --- 0
 
-    classDef myNodeStyle fill:#fff, stroke-width: 1px, rx: 10px, ry: 10px;
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4 myNodeStyle;
 ```
-
+</div>
 - **Grafo não Conexo** - Um grafo que não é conexo consiste em um conjunto de outros componentes conexos.
 
 Exemplo:
+<div align="center">
 ```mermaid
     graph LR;
     0 --- 1
@@ -162,13 +173,16 @@ Exemplo:
     2 --- 0
     4 --- 5
 
-    classDef myNodeStyle fill:#fff, stroke-width: 1px, rx: 10px, ry: 10px;
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4,5 myNodeStyle;
 ```
+</div>
 
 ### 4.4.4 Grafos dirigidos conexos acíclicos
 
 - É um grafo dirigido que não possui ciclos. **Árvores são grafos dirigidos acíclicos**, observe que **Toda árvore é um digrafo acíclico**, porém **nem todo digrafo acíclico é uma árvore**, vértices de um digrafo podem ter mais de uma aresta e não necessariamente existe uma hierarquia entre os filhos e o pai, diferentemente de uma árvore.
+
+<div align="center">
 
 ```mermaid
 
@@ -180,9 +194,10 @@ Exemplo:
     4 --> 11;
     7 --> 12 & 13;
 
-    classDef myNodeStyle fill:#fff, stroke-width: 1px, rx: 10px, ry: 10px;
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4,5,6,7,8,9,10,11,12,13 myNodeStyle;
 ```
+</div>
 
 ### 4.4.5 Grafo dirigido fortemente conexo
 
@@ -246,7 +261,7 @@ Como implementar peso nas arestas?
 ## 4.5 Structs e algoritmos iniciais
 
 A estrutura básica para representar um grafo é a **Aresta(Edge)**, que simboliza a conexão entre dois **Vértices(Vertex)**, que podem ser abstraídos para um **Item** em questão, que pode ser um `int`, `char` ou qualquer `tipo abstrato` que for definido.
-```C
+```C 
     typedef struct Edge{
         int v; 
         int w;
@@ -255,27 +270,27 @@ A estrutura básica para representar um grafo é a **Aresta(Edge)**, que simboli
 
 Outras estruturas fundamentais são as de [Matriz de Adjacência](#411-matriz-de-adjacência) e [Lista de Adjacência](#412-lista-de-adjacência), que são:
 
-```C
+```C 
     #define MAX_VERTEX 100 
 
     //Matriz de Adjacência
     typedef struct Graph{
-        int numVertex;                          //Guarda o número total de vértices
-        int size;                               //Número total de arestas
-        int adj[MAX_VERTEX][MAX_VERTEX];        //Matriz de fato
+        int numVertex;                      //Guarda o número total de vértices
+        int size;                           //Número total de arestas
+        int adj[MAX_VERTEX][MAX_VERTEX];    //Matriz de fato
     }Graph;
 
     //Lista de Adjacência
     typedef struct Node{
-        int vertex;                             //Número do vértice atual
-        Node *next;                             //Endereço do próx nó
-        Edge *edges;                            //Lista/Vetor de conexões
+        int vertex;                         //Número do vértice atual
+        Node *next;                         //Endereço do próx nó
+        Edge *edges;                        //Lista/Vetor de conexões
     }Node;
 
     typedef struct Graph{
-        int numVertex;                          //Guarda o número total de vértices
-        int size;                               //Número total de arestas
-        Node *adj;                              //Cabeça da lista
+        int numVertex;                      //Guarda o número total de vértices
+        int size;                           //Número total de arestas
+        Node *adj;                          //Cabeça da lista
     }Graph;
 ```
 

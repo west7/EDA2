@@ -112,7 +112,6 @@ graph LR;
 
     classDef myNodeStyle fill:#FFF,stroke-width:2px, rx: 10px, ry 10px;
 
-    class A,B,C,A2,B2,A3,B3,A4,D4,E4,A5,B6,C6,a7,b7,c7,d7,e7,f7,g7 myNodeStyle;
 
     style C2 fill: #FF272A, 
     style C3 fill: #FF272A
@@ -264,22 +263,16 @@ Altura Negra refere-se à distância de um nó folha **preto** até a raiz.
 - A árvore final do [diagrama](#222-insercoes-em-arvore-red-black), poderia ser representada da seguinte forma em um modelo de árvore 2-3:
 
 ```mermaid
-flowchart TD;
-    subgraph I7[Final Tree]
-        a7(10) --> b7(3)
-        a7(10) --> c7(20)
-        b7(3) --> z7(NULL) & e7(5)
-        e7(5) --> y7(NULL) & x7(NULL)
-        c7(20) --> f7(15)
-        c7(20) --> g7(30 25)
-        f7 --> w7(NULL) & u7(NULL)
-        g7(30 25) --> h7(NULL)
-        g7(30 25) --> i7(NULL)
-        g7(30 25) --> j7(NULL)
-    end
-
-    classDef myNodeStyle fill:#FFF,stroke-width:2px,stroke:#000, rx: 10px, ry 10px;
-    class a7,b7,c7,z7,e7,y7,x7,g7,f7,i7,h7,j7,w7,u7 myNodeStyle;
-
-    style I7 fill: #FFF, stroke: #FFF, stroke-width: 1px, width: 800px;
+graph TD;
+    a7((10)) --> b7(3)
+    a7(10) --> c7(20)
+    b7(3) --> z7(NULL) & e7(5)
+    e7(5) --> y7(NULL) & x7(NULL)
+    c7(20) --> f7(15)
+    c7(20) --> g7(30 25)
+    f7 --> w7(NULL) & u7(NULL)
+    g7(30 25) --> h7(NULL)
+    g7(30 25) --> i7(NULL)
+    g7(30 25) --> j7(NULL)
+    
 ```
