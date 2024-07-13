@@ -9,7 +9,7 @@ site_description: Site destinado à documentação da apostila de estrutura de d
 nav:
   - Início:
     - Sumário: index.md
-  - Apostila:
+  - Conteúdos:
     - Hash Table: apostila/HashTable.md
     - Árvore Red Black: apostila/ÁrvoreRedBlack.md
     - Fila de Prioridades: apostila/FiladePrioridades.md
@@ -37,19 +37,17 @@ theme:
       toggle:
         icon: material/weather-night
         name: Mudar para o modo escuro
-      primary: black
-      accent: deep purple
+      primary: white
+      accent: red
 
     - scheme: slate
       toggle:
         icon: material/weather-sunny
         name: Mudar para o modo claro
-      primary: black
-      accent: deep purple
+      primary: deep purple
+      accent: red
   language: pt-BR
   
-extra_css:
-  - style/style.css
 
 
 plugins:
@@ -78,6 +76,4 @@ markdown_extensions:
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
 
-extra:
-  social: 
 

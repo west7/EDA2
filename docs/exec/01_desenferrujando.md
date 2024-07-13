@@ -1,7 +1,8 @@
 # Lista I - Desenferrujando para o semestre
 
 ## Introdução
-Aqui se encontram as soluções dos problemas referentes à 1ª lista de exercícios e os PDFs de cada problema associados ao título do problema.
+
+Aqui se encontram as soluções dos problemas referentes à 1ª lista de exercícios e os PDFs de cada problema associados ao título.
 
 ## Problemas
 

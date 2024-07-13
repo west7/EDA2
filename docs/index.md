@@ -91,52 +91,51 @@ A primeira lista é voltada para revisão e familiarização com o formato das l
 
 A segunda lista tinha o objetivo de resolver exercícios relacionados à [Hash Table](apostila/HashTable.md).
 
-- A : [Desfile dos Patos](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-hash/desfile.pdf)
-- B : [Diga-me a frequência](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-hash/digafrequencia.pdf)
-- C : [Eleição U.R.S.A.L](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-hash/eleicao-ursal-big.pdf)
-- D : [Notas Curiosas](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-hash/notas.pdf)
-- E : [Notas](https://br.spoj.com/problems/NOTAS14.pdf)
-- F : [HashIT!](https://www.spoj.com/problems/HASHIT.pdf)
-- G : [Hash](https://br.spoj.com/problems/HASHADIQ.pdf) 
-- H : [Mensagens Nlogoniences](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-hash/mensagens.pdf)
+- A : [Desfile dos Patos](exec/02_hashing.md#desfile-dos-patos)
+- B : [Diga-me a frequência](exec/02_hashing.md#diga-me-a-frequencia)
+- C : [Eleição U.R.S.A.L](exec/02_hashing.md#eleicao-ursal)
+- D : [Notas Curiosas](exec/02_hashing.md#notas-curiosas)
+- E : [Notas](exec/02_hashing.md#notas)
+- F : [HashIT!](exec/02_hashing.md#hash-it)
+- G : [Hash](exec/02_hashing.md#hash)
+- H : [Mensagens Nlogoniences](exec/02_hashing.md#mensagens-nlogniences)
 
 ### [Listas III - Priority Queue](exec/03_priority_queue.md)
 
 A terceira lista contém exercícios de [Heap](apostila/FiladePrioridades.md).
 
-- A : [Menores Placas](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-pq/menores-placas.pdf)
-- B : [Churrascarias da Avenida](https://br.spoj.com/problems/CHURRASC.pdf)
-- C : [Minimun Stocks](https://www.spoj.com/problems/MINSTOCK.pdf)
+- A : [Menores Placas](exec/03_priority_queue.md#menores-placas)
+- B : [Churrascarias da Avenida](exec/03_priority_queue.md#churrascarias-da-avenida)
+- C : [Minimun Stocks](exec/03_priority_queue.md#minimun-stocks)
 
 ### [Lista IV - QuickSelect](exec/04_quickselect.md)
 
 A quarta lista tem como enfoque o algoritmo [Quickselect](apostila/Quickselect.md), um algoritmo de busca baseado no algoritmo de ordenação QuickSort.
 
-- A : [Classificados de Sementes](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-quickselect/classificado-agronomia.pdf)
-- B : [kk-página](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-quickselect/kk-pagina.pdf)
-- C : [Desfile dos Patos - QuickSelect](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-quickselect/desfile.pdf)
-- D : [Menores Placas - QuickSelect](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-quickselect/menores-placas.pdf)
-  
+- A : [Classificados de Sementes](exec/04_quickselect.md#classificados-de-sementes)
+- B : [kk-página](exec/04_quickselect.md#kk-página)
+- C : [Desfile dos Patos - QuickSelect](exec/04_quickselect.md#desfile-dos-patos)
+- D : [Menores Placas - QuickSelect](exec/04_quickselect.md#menores-placas)
 
 ### [Lista V - Grafos, o início](exec/05_grafos.md)
 
 A quinta lista introduz os conceitos e algoritmos básicos de [Grafos](apostila/Grafos.md).
 
-- A : [Eu vou estar lá!](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos/euvouestarla.pdf)
-- B : [Estradas asfaltadas](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos/grafo-nucleos-cidades.pdf)
-- C : [Estradas asfaltadas - viagem aérea](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos/grafo-ajude-joao.pdf)
-- D : [Natureza](https://br.spoj.com/problems/NATUREZA.pdf)
-- E : [Ir e vir](https://br.spoj.com/problems/IREVIR.pdf)
+- A : [Eu vou estar lá!](exec/05_grafos.md#eu-vou-estar-la)
+- B : [Estradas asfaltadas](exec/05_grafos.md#estradas-asfaltadas-o-inicio)
+- C : [Estradas asfaltadas - viagem aérea](exec/05_grafos.md#estradas-asfaltadas-viagem-aerea)
+- D : [Natureza](exec/05_grafos.md#natureza)
+- E : [Ir e vir](exec/05_grafos.md#ir-e-vir)
 
 
 ### [Lista VI - Busca em Grafos](exec/06_busca_em_grafos.md)
 
 A sexta lista coloca em prática alguns dos algoritmos fundamentais de [Grafos](apostila/Grafos.md), como o [Algoritmo de Dijkstra](apostila/Grafos.md#4811-dijkstra) e o [Algoritmo de BellmanFord](apostila/Grafos.md#4812-bellman-ford).
 
-- A: [Estradas asfaltadas - perguntando conexões](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos-busca/grafo-nlogonia-conexoes.pdf)
-- B: [Cai fora LAG](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos-busca/grafo-chp.pdf)
-- C: [Caminho das Pontes](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos-busca/pontes.pdf)
-- D: [O chão virou lava](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos-busca/o_chao_e_lava.pdf)
-- E: [Regra dos seis apertos de mão](https://moj.naquadah.com.br/contests/bcr-EDA2-2023_2-grafos-busca/handshakes-rule.pdf)
+- A: [Estradas asfaltadas - perguntando conexões](exec/06_busca_em_grafos.md#estradas-asfaltadas-perguntando-conexoes)
+- B: [Cai fora LAG](exec/06_busca_em_grafos.md#cai-fora-lag)
+- C: [Caminho das Pontes](exec/06_busca_em_grafos.md#caminho-das-pontes)
+- D: [O chão virou lava](exec/06_busca_em_grafos.md#o-chao-virou-lava)
+- E: [Regra dos seis apertos de mão](exec/06_busca_em_grafos.md#regra-dos-seis-apertos-de-mao)
 
 
