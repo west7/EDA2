@@ -1,5 +1,5 @@
 
-# QuickSelect
+# Quickselect
 
 QuickSelect é um algoritmo de busca inspirado no QuickSort (ordenação). Ele é usado para encontrar o k-ésimo menor elemento em um array não ordenado. Após uma passagem do algoritmo ele garante que: todos os elementos a direita de um pivô serão maiores que ele, e que todos a esquerda serão menores que ele.
 
