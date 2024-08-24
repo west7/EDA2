@@ -1,0 +1,2095 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Site destinado à documentação da apostila de estrutura de dados 2.">
+      
+      
+        <meta name="author" content="GUilherme Westphall">
+      
+      
+        <link rel="canonical" href="https://west7.github.io/EDA2/apostila/Grafos/">
+      
+      
+        <link rel="prev" href="../FiladePrioridades/">
+      
+      
+        <link rel="next" href="../Quickselect/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
+    
+    
+      
+        <title>Grafos - Estrutura de dados e algoritmos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-grafos" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Estrutura de dados e algoritmos" class="md-header__button md-logo" aria-label="Estrutura de dados e algoritmos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estrutura de dados e algoritmos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Grafos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="red"  aria-label="Mudar para o modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="red"  aria-label="Mudar para o modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/west7/EDA2" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EDA2
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  Início
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../HashTable/" class="md-tabs__link">
+          
+  
+  Conteúdos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../exec/01_desenferrujando/" class="md-tabs__link">
+          
+  
+  Listas
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estrutura de dados e algoritmos" class="md-nav__button md-logo" aria-label="Estrutura de dados e algoritmos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Estrutura de dados e algoritmos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/west7/EDA2" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EDA2
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Início
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Início
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sumário
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Conteúdos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Conteúdos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HashTable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hash Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%C3%81rvoreRedBlack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Árvore Red Black
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FiladePrioridades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fila de Prioridades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Grafos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Grafos
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Implementação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Implementação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-matriz-de-adjacencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.1 Matriz de Adjacência
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-lista-de-adjacencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.2 Lista de Adjacência
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-bonus-matriz-x-lista" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.3 Bônus - Matriz X Lista
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-grafo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Grafo Completo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-grafos-dirigidos-ou-digrafos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Grafos dirigidos ou Digrafos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-conceitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Conceitos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Conceitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-classificacao-de-vertices" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.1 Classificação de Vértices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-caminho" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.2 Caminho
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-conectividade" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.3 Conectividade
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#444-grafos-dirigidos-conexos-aciclicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.4 Grafos dirigidos conexos acíclicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#445-grafo-dirigido-fortemente-conexo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.5 Grafo dirigido fortemente conexo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#446-fecho-transitivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.6 Fecho Transitivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#447-grafos-ponderados-peso-nas-arestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.7 Grafos Ponderados (Peso nas arestas)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-structs-e-algoritmos-iniciais" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Structs e algoritmos iniciais
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-busca-em-largura-bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 Busca em Largura (BFS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-busca-em-profundidade-dfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.7 Busca em profundidade (DFS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-problemas-classicos-e-algoritmos-fundamentais" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8 Problemas clássicos e Algoritmos Fundamentais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.8 Problemas clássicos e Algoritmos Fundamentais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#481-problema-do-menor-caminho" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.1 Problema do Menor caminho
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.8.1 Problema do Menor caminho">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4811-dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.1.1 Dijkstra
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4812-bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.1.2 Bellman Ford
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#482-problema-das-arvores-geradoras-e-arvores-geradoras-de-custo-minimo-mst" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.2 Problema das árvores geradoras e árvores geradoras de custo mínimo (MST)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.8.2 Problema das árvores geradoras e árvores geradoras de custo mínimo (MST)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4821-prim" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.2.1 Prim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4822-kruskal" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.2.2 Kruskal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quickselect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quickselect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Listas
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Listas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exec/01_desenferrujando/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lista 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exec/02_hashing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lista 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exec/03_priority_queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lista 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exec/04_quickselect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lista 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exec/05_grafos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lista 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exec/06_busca_em_grafos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lista 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Implementação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Implementação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-matriz-de-adjacencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.1 Matriz de Adjacência
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-lista-de-adjacencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.2 Lista de Adjacência
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-bonus-matriz-x-lista" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.3 Bônus - Matriz X Lista
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-grafo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Grafo Completo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-grafos-dirigidos-ou-digrafos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Grafos dirigidos ou Digrafos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-conceitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Conceitos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Conceitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-classificacao-de-vertices" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.1 Classificação de Vértices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-caminho" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.2 Caminho
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-conectividade" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.3 Conectividade
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#444-grafos-dirigidos-conexos-aciclicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.4 Grafos dirigidos conexos acíclicos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#445-grafo-dirigido-fortemente-conexo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.5 Grafo dirigido fortemente conexo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#446-fecho-transitivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.6 Fecho Transitivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#447-grafos-ponderados-peso-nas-arestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.7 Grafos Ponderados (Peso nas arestas)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-structs-e-algoritmos-iniciais" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Structs e algoritmos iniciais
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-busca-em-largura-bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 Busca em Largura (BFS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-busca-em-profundidade-dfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.7 Busca em profundidade (DFS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-problemas-classicos-e-algoritmos-fundamentais" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8 Problemas clássicos e Algoritmos Fundamentais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.8 Problemas clássicos e Algoritmos Fundamentais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#481-problema-do-menor-caminho" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.1 Problema do Menor caminho
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.8.1 Problema do Menor caminho">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4811-dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.1.1 Dijkstra
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4812-bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.1.2 Bellman Ford
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#482-problema-das-arvores-geradoras-e-arvores-geradoras-de-custo-minimo-mst" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.2 Problema das árvores geradoras e árvores geradoras de custo mínimo (MST)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.8.2 Problema das árvores geradoras e árvores geradoras de custo mínimo (MST)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4821-prim" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.2.1 Prim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4822-kruskal" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8.2.2 Kruskal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="4-grafos">4. Grafos</h1>
+<p>Grafos são estruturas de dados amplamente utilizadas na computação. São uma ótima maneira de representar relacionamentos entre elementos, como por exemplo: mapas, redes, encanação, aeroportos, etc. Podem ser representados graficamente como um conjunto de vértices e arestas.</p>
+<h2 id="41-implementacao">4.1 Implementação</h2>
+<p>Existem duas principais formas de reprensentá-los. <strong>Matriz de adjacência</strong> ou <strong>Lista de adjacência</strong>.</p>
+<h3 id="411-matriz-de-adjacencia">4.1.1 Matriz de Adjacência</h3>
+<p>Uma matriz bidimensional que representa a relação entre os vértices. Os elementos da matriz indicam se há ou não uma relação entre os vértices. Útil para grafos densos (completos ou quase completos). Consome espaço proporcional à V² (onde V é o número de vértices). Acesso rápido para verificar a existência de arestas (O(1)).</p>
+<ul>
+<li>Imagine o seguinte grafo:</li>
+</ul>
+<pre class="mermaid"><code>    graph LR;
+    0 --- 1 &amp; 2
+    1 --- 2
+    2 --- 3
+    4
+
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;</code></pre>
+<ul>
+<li>Sua respectiva matriz de adjacência poderia ser representada da seguinte maneira:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Os ' 1 's representam as conexões</strong> e os <strong>' 0 's a ausência delas</strong>, por padrão a diagonal principal já é preenchida com ' 1 ', a conexão de um elemento com ele mesmo é trivial.</li>
+</ul>
+<p>Veja a <a href="#45-structs-e-algoritmos-inicias">Implementação.</a></p>
+<h3 id="412-lista-de-adjacencia">4.1.2 Lista de Adjacência</h3>
+<p>A ideia da lista de adjacência é construir um vetor de tamanho V (número de vértices) onde cada índice representa um vértice do grafo, e cada espaço do vetor contém um ponteiro para uma lista encadeada, que representa as conexões daquele vértice com outros vértices do grafo. Pode ser comparada ao <a href="../HashTable/#113-encadeamento-separado">Encadeamento Separado</a> da Hash Table.</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Note que é uma representação bem mais enxuta comparada à matriz, logo também ocupa menos espaço. Vale ressaltar que, uma conexão não precisa ser representada duas vezes, ou seja, se um vértice tem conexão com um vértice menor que ele mesmo, não é necessário incluir esta aresta na lista de adjacências, pois esta aresta já estará representada no vértice menor, por exemplo a <strong>aresta (0, 2)</strong>, note que o <strong>0</strong> já contém a conexão com o <strong>2</strong>, portanto não se faz necessário representar esta conexão novamente no vértice <strong>2</strong>. Obviamente isto só é verdadeiro para <a href="#42-grafos-dirigidos-ou-digrafos">grafos não direcionados</a>, neste caso, aí sim, eu teria que inserir esta conexão em ambos vértices.</p>
+<p>Veja a <a href="#45-structs-e-algoritmos-inicias">Implementação.</a></p>
+<h3 id="413-bonus-matriz-x-lista">4.1.3 Bônus - Matriz X Lista</h3>
+<p>Apresentadas ambas estratégias, podemos definir algumas vantagens e desvantagens entre elas:
+%3E E = número de arestas , V = número de vértices</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vetor de Arestas</th>
+<th>Matriz de Adjacência</th>
+<th>Lista de Adjacência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>space</strong></td>
+<td>E</td>
+<td>V²</td>
+<td>V + E</td>
+</tr>
+<tr>
+<td><strong>initialize</strong></td>
+<td>1</td>
+<td>V²</td>
+<td>V</td>
+</tr>
+<tr>
+<td><strong>copy</strong></td>
+<td>E</td>
+<td>V²</td>
+<td>E</td>
+</tr>
+<tr>
+<td><strong>destroy</strong></td>
+<td>1</td>
+<td>V</td>
+<td>E</td>
+</tr>
+<tr>
+<td><strong>insert Edge</strong></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>find/remove Edge</strong></td>
+<td>E</td>
+<td>1</td>
+<td>V</td>
+</tr>
+<tr>
+<td><strong>Vertex is isolate?</strong></td>
+<td>E</td>
+<td>V</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Path from U to V</strong></td>
+<td>E * log V</td>
+<td>V²</td>
+<td>E + V</td>
+</tr>
+</tbody>
+</table>
+<h2 id="42-grafo-completo">4.2 Grafo Completo</h2>
+<p>Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta para cada outro vértice no grafo. Totalizando o de máximo v*(v-1)/2 arestas, onde 'v' é o número de vértices.</p>
+<div align="center">
+
+<pre class="mermaid"><code>    graph LR;
+    0 --- 1 &amp; 2 &amp; 3
+    2 --- 3
+    1 --- 2 &amp; 3
+
+
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;</code></pre>
+
+</div>
+
+<ul>
+<li>Note que todos os vértices tem ligação entre si, tornando o grafo acima completo. Com um <strong>total de 4 vértices</strong>, têm-se um <strong>total de 4*3/2</strong> arestas, ou <strong>6 arestas</strong>.</li>
+</ul>
+<h2 id="43-grafos-dirigidos-ou-digrafos">4.3 Grafos dirigidos ou Digrafos</h2>
+<p>São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta de '0' para '1', não necessariamente tenho uma aresta de '1' para '0'.</p>
+<div align="center">
+
+<pre class="mermaid"><code>    graph LR;
+    4 --&gt; 0 &amp; 1
+    0 --&gt; 1
+    1 --&gt; 2
+    2 --&gt; 0 &amp; 3
+    0 --&gt; 3
+
+
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;</code></pre>
+</div>
+
+<ul>
+<li>Há um fluxo entre os vértices, a partir do "0" consigo alcançar qualquer vértice, porém a partir do "3" não consigo atingir nenhum outro vértice.</li>
+</ul>
+<h2 id="44-conceitos">4.4 Conceitos</h2>
+<h3 id="441-classificacao-de-vertices">4.4.1 Classificação de Vértices</h3>
+<ul>
+<li>Vértices <strong>"sink"</strong> são aquelas que não possuem arestas <strong>saindo</strong> dele, apenas <strong>chegando</strong>, <strong>3</strong> é um vértice sink.</li>
+<li>Vértices <strong>"source"</strong> são aqueles que não possuem arestas <strong>chegando</strong> n'ele, apenas <strong>saindo</strong>, <strong>4</strong> é um vértice source.</li>
+</ul>
+<h3 id="442-caminho">4.4.2 Caminho</h3>
+<p>Caminho em grafos é a <strong>sequência de vértices</strong> em que cada vértice <strong>sucessivo</strong> é <strong>adjacente</strong> ao predecessor, ou seja, cada vértice está conectado ao seguinte por uma aresta. São uma parte essencial da análise e resolução de problemas com grafos e podem ter diversas aplicações, incluindo navegação, otimização, planejamento de rotas, etc.</p>
+<ul>
+<li>
+<p><strong>Caminho Simples</strong> - Um caminho onde todos os vértices são distintos, exceto o primeiro e último, que podem ser iguais. <em>Obs: Não necessariamente o caminho mais curto</em>.</p>
+</li>
+<li>
+<p><strong>Caminho fechado (Circuito)</strong> - Um caminho no qual o vértice de partida e vértice de chegada é o mesmo. Se for um <strong>caminho simples</strong>, todos os vértices no caminho são distintos, é chamado de <strong>Ciclo</strong>.</p>
+</li>
+</ul>
+<p>Exemplo:</p>
+<div align="center">
+
+<pre class="mermaid"><code>    graph LR;
+    0 --- 1
+    1 --- 2
+    2 --- 0
+
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;</code></pre>
+</div>
+
+<ul>
+<li><strong>Caminho mínimo</strong> -   O caminho mínimo entre dois vértices é o caminho mais curto em termos de custo, peso ou distância. Isso é frequentemente usado em problemas de otimização, como encontrar a rota mais curta em um sistema de transporte.</li>
+</ul>
+<h3 id="443-conectividade">4.4.3 Conectividade</h3>
+<ul>
+<li><strong>Grafo Conexo</strong> - Um grafo é conexo se há um caminho de cada vértice para todo outro vértice. Em outras palavras não importa o vértice de partida você sempre será capaz de alcançar qualquer outro vértice do grafo. </li>
+</ul>
+<p>Exemplo:</p>
+<div align="center">
+
+<pre class="mermaid"><code>    graph LR;
+    0 --- 1
+    1 --- 2
+    2 --- 0
+
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4 myNodeStyle;</code></pre>
+</div>
+<ul>
+<li><strong>Grafo não Conexo</strong> - Um grafo que não é conexo consiste em um conjunto de outros componentes conexos.</li>
+</ul>
+<p>Exemplo:</p>
+<div align="center">
+
+<pre class="mermaid"><code>    graph LR;
+    0 --- 1
+    1 --- 2
+    2 --- 0
+    4 --- 5
+
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4,5 myNodeStyle;</code></pre>
+
+</div>
+
+<h3 id="444-grafos-dirigidos-conexos-aciclicos">4.4.4 Grafos dirigidos conexos acíclicos</h3>
+<ul>
+<li>É um grafo dirigido que não possui ciclos. <strong>Árvores são grafos dirigidos acíclicos</strong>, observe que <strong>Toda árvore é um digrafo acíclico</strong>, porém <strong>nem todo digrafo acíclico é uma árvore</strong>, vértices de um digrafo podem ter mais de uma aresta e não necessariamente existe uma hierarquia entre os filhos e o pai, diferentemente de uma árvore.</li>
+</ul>
+<div align="center">
+
+<pre class="mermaid"><code>
+    graph TD;
+    0 --&gt; 1 &amp; 2;
+    1 --&gt; 5 &amp; 3 &amp; 4;
+    2 --&gt; 6 &amp; 7;
+    3 --&gt; 8 &amp; 9 &amp; 10;
+    4 --&gt; 11;
+    7 --&gt; 12 &amp; 13;
+
+    classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
+    class 0,1,2,3,4,5,6,7,8,9,10,11,12,13 myNodeStyle;</code></pre>
+</div>
+
+<h3 id="445-grafo-dirigido-fortemente-conexo">4.4.5 Grafo dirigido fortemente conexo</h3>
+<p>A noção de <strong>conectividade forte</strong> é aplicada aos <strong>digrafos</strong>. Um grafo direcionado ou dirigido é considerado fortemente conexo se para cada par de vértices (v, w) existe uma aresta de <strong>v para w</strong> e uma aresta de <strong>w para v</strong>.</p>
+<h3 id="446-fecho-transitivo">4.4.6 Fecho Transitivo</h3>
+<p>O <strong>Fecho Transitivo</strong> de um grafo dirigido é um grafo dirigido com o mesmo conjunto de vértices mas com uma aresta de <strong>s</strong> para <strong>t</strong>, se e somente se, existe um caminho dirigido de <strong>s</strong> à <strong>t</strong> no grafo dirigido.</p>
+<p><strong>Floyd Warshall</strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Floyd Warshall</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">graphtc</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="o">*</span><span class="n">g</span><span class="p">){</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">        </span><span class="c1">//Inicia uma matriz de adj</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">tc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MATRIXinit</span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">%</span><span class="mi">3</span><span class="n">C</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="n">s</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">                </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">tc</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">adj</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">t</span><span class="p">];</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">        </span><span class="c1">//seta a diagonal principal</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">            </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">tc</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">        </span><span class="c1">//Percorre as linhas i e as colunas s</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">                </span><span class="c1">//Verifica se existe um caminho de s para i</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">tc</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">                    </span><span class="c1">//Percorre todos os elementos da linha i</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">                    </span><span class="k">for</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">                        </span><span class="c1">//Verifica se há caminho entre i e t</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">                        </span><span class="k">if</span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">tc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">                            </span><span class="c1">//Se sim então também existe caminho de s para t</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">                            </span><span class="c1">//Cria uma nova aresta</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">                            </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">tc</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="447-grafos-ponderados-peso-nas-arestas">4.4.7 Grafos Ponderados (Peso nas arestas)</h3>
+<p>O peso nas arestas pode ser, por exemplo, a distância física entre dois pontos.</p>
+<pre class="mermaid"><code>    graph LR;
+    a[Plano Piloto] --&gt;|40 km| b[Taguatinga] --&gt;|20 km| c[Núcleo Bandeirante]
+    a --&gt;|30 km| c
+    c --&gt;|20 km| a</code></pre>
+<p>Como implementar peso nas arestas?</p>
+<ul>
+<li>Matriz de adjacências:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>40</td>
+<td>30</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>∞</strong></td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>20</td>
+<td><strong>∞</strong></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="45-structs-e-algoritmos-iniciais">4.5 Structs e algoritmos iniciais</h2>
+<p>A estrutura básica para representar um grafo é a <strong>Aresta(Edge)</strong>, que simboliza a conexão entre dois <strong>Vértices(Vertex)</strong>, que podem ser abstraídos para um <strong>Item</strong> em questão, que pode ser um <code>int</code>, <code>char</code> ou qualquer <code>tipo abstrato</code> que for definido.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">}</span><span class="n">Edge</span><span class="p">;</span><span class="w">  </span>
+</code></pre></div>
+<p>Outras estruturas fundamentais são as de <a href="#411-matriz-de-adjacência">Matriz de Adjacência</a> e <a href="#412-lista-de-adjacência">Lista de Adjacência</a>, que são:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="cp">#define MAX_VERTEX 100 </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="c1">//Matriz de Adjacência</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Graph</span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">numVertex</span><span class="p">;</span><span class="w">                      </span><span class="c1">//Guarda o número total de vértices</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w">                           </span><span class="c1">//Número total de arestas</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">MAX_VERTEX</span><span class="p">][</span><span class="n">MAX_VERTEX</span><span class="p">];</span><span class="w">    </span><span class="c1">//Matriz de fato</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span><span class="n">Graph</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1">//Lista de Adjacência</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="p">{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">vertex</span><span class="p">;</span><span class="w">                         </span><span class="c1">//Número do vértice atual</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w">                         </span><span class="c1">//Endereço do próx nó</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="n">Edge</span><span class="w"> </span><span class="o">*</span><span class="n">edges</span><span class="p">;</span><span class="w">                        </span><span class="c1">//Lista/Vetor de conexões</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span><span class="n">Node</span><span class="p">;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Graph</span><span class="p">{</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">numVertex</span><span class="p">;</span><span class="w">                      </span><span class="c1">//Guarda o número total de vértices</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w">                           </span><span class="c1">//Número total de arestas</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">adj</span><span class="p">;</span><span class="w">                          </span><span class="c1">//Cabeça da lista</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="p">}</span><span class="n">Graph</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="46-busca-em-largura-bfs">4.6 Busca em Largura (BFS)</h2>
+<p>Se assemelha à uma explosão, feita para achar <strong>menores caminhos</strong>. A <strong>BFS</strong> explora todos os vizinhos de um nó antes de avançar para os vizinhos dos vizinhos. O algoritmo usa de uma <strong>Fila</strong> para controlar as ordens de acesso aos vértices. Ela garante que todos os vértices de uma profundidade <em>d</em> serão explorados antes de explorar vértices de uma profundidade <em>d + 1</em>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">MAX_VERTEX</span><span class="p">];</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">bfs</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="o">*</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">Edge</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">QueuePut</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">visited</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">QueueEmpty</span><span class="p">()){</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QueueGet</span><span class="p">();</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">            </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">G</span><span class="o">-&gt;</span><span class="n">adj</span><span class="p">[</span><span class="n">w</span><span class="p">];</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">){</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="o">-&gt;</span><span class="n">vertex</span><span class="p">;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">visited</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">){</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">                    </span><span class="n">QueuePut</span><span class="p">(</span><span class="n">Edge</span><span class="p">{</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">});</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">                    </span><span class="n">visited</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<h2 id="47-busca-em-profundidade-dfs">4.7 Busca em profundidade (DFS)</h2>
+<p>Explora sempre o caminho mais profundo do grafo antes de retroceder. Faz uso de uma <strong>Pilha</strong> ou de <strong>Recursão</strong>(que também é um pilha) para controlar a ordem de acesso aos vértices. Algoritmo guloso, vai em um mesmo caminho até não conseguir mais, boa para <strong>BackTracking</strong> (fazer uma escolha baseado no que acontecer), usada para encontrar soluções, como caminhos mais longos ou todos os caminhos possíveis. Melhor quando é preciso encontrar todos os caminhos de um grafo.</p>
+<ul>
+<li>Implementação 1 (Bruno Ribas):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">MAX_VERTEX</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nb">false</span><span class="p">};</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfsr</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="o">*</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">Edge</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="n">visited</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">G</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">G</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">w</span><span class="p">][</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">visited</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">                    </span><span class="n">dfsr</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">Edge</span><span class="p">{</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">});</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Implementação 2:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfsUtil</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="o">*</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">vertex</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">visited</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="n">visited</span><span class="p">[</span><span class="n">vertex</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">G</span><span class="o">-&gt;</span><span class="n">adj</span><span class="p">[</span><span class="n">vertex</span><span class="p">];</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">adjVertex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="o">-&gt;</span><span class="n">vertex</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">adjVertex</span><span class="p">])</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">                </span><span class="n">dfsr2</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">adjVertex</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">);</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="o">*</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">startVertex</span><span class="p">)</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">MAX_VERTEX</span><span class="p">];</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_VERTEX</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">            </span><span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="n">dfsUtil</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">startVertex</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">);</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<h2 id="48-problemas-classicos-e-algoritmos-fundamentais">4.8 Problemas clássicos e Algoritmos Fundamentais</h2>
+<h3 id="481-problema-do-menor-caminho">4.8.1 Problema do Menor caminho</h3>
+<p>Imagine um grafo dirigido ponderado, o <strong><em>caminho</em></strong> de um vértice <em>v</em> até um vértice <em>w</em> é o conjunto de arestas que ligam <em>v</em> e <em>w</em>. O <strong><em>peso</em></strong> de um caminho <em>C</em> será a soma dos pesos da arestas que o compõe. <em>C</em> será mínimo, se e somente se, nenhum outro caminho com a mesma <em>origem</em> e mesmo <em>destino</em> tiver um <em>peso</em> menor que o peso de <em>C</em>. A <strong><em>distância</em></strong> de um vértice <em>v</em> a <em>w</em> é o <strong><em>caminho mínimo</em></strong> de <em>v</em> a <em>w</em>. Se não existe nenhum caminho de <em>v</em> para <em>w</em>, então a <strong><em>distância</em></strong> de <em>v</em> para <em>w</em> é <strong>infinita</strong>. É claro que, em geral, a distância de v para w é diferente da distância de w para v.</p>
+<blockquote>
+<p><strong>Como encontrar a distância de uma origem para qualquer outro vértice de um grafo dirigifo ponderado <em>G</em>?</strong></p>
+</blockquote>
+<p>O problema faz sentido, para pesos <strong>positivos e negativos</strong>, porém vamos focar nos positivos primeiro.</p>
+<h4 id="4811-dijkstra">4.8.1.1 Dijkstra</h4>
+<p>O algoritmo de Dijkstra é um algoritmo clássico de <strong>caminho mínimo</strong>, para encontrar o caminho mais curto de um nó de origem para todos os outros nós de um <strong>grafo ponderado</strong> com arestas de <strong>peso não negativo</strong>. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Dijkstra</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="o">*</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="n">pa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="n">pa</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">Heap</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PQInit</span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">);</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="n">PQInsert</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">PQEmpty</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PQPop</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">Edge</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">edges</span><span class="p">[</span><span class="n">y</span><span class="p">];</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">next</span><span class="p">)</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">visited</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">])</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">weight</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">])</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">                </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">weight</span><span class="p">;</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">                </span><span class="n">PQChange</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">]);</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">                </span><span class="n">pa</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">            </span><span class="n">visited</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">    </span><span class="n">PQFree</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Complexidade:</strong> O(E log V) </p>
+<h4 id="4812-bellman-ford">4.8.1.2 Bellman Ford</h4>
+<p>Assim como o Algoritmo de Dijkstra, o Alogritmo de Bellam Ford, surge para solucionar o problema de menor caminho em um grafo ponderado, porém, diferente do Dijkstra, este algoritmo não se limita apenas a grafos ponderados de arestas não negativas, ele também funciona para arestas de <strong>pesos negativos</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">BellmanFord</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="o">*</span><span class="n">pa</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">dist</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">   </span><span class="n">PQInit</span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numEdges</span><span class="p">);</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">vertex</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">u</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">      </span><span class="n">pa</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">   </span><span class="n">pa</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">   </span><span class="n">PQInsert</span><span class="p">(</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">   </span><span class="n">visited</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">   </span><span class="n">vertex</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">V</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">   </span><span class="n">PQInsert</span><span class="p">(</span><span class="n">V</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">      </span><span class="n">vertex</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PQPop</span><span class="p">(</span><span class="w"> </span><span class="p">);</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">V</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">link</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">];</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">               </span><span class="n">dist</span><span class="p">[</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">               </span><span class="n">pa</span><span class="p">[</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">               </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">visited</span><span class="p">[</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">                  </span><span class="n">PQInsert</span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">);</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">                  </span><span class="n">visited</span><span class="p">[</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">               </span><span class="p">}</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">         </span><span class="p">}</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PQEmpty</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">++</span><span class="n">k</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">V</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">         </span><span class="n">PQInsert</span><span class="p">(</span><span class="n">V</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">vertex</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">V</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">u</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w">            </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">   </span><span class="p">}</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="482-problema-das-arvores-geradoras-e-arvores-geradoras-de-custo-minimo-mst">4.8.2 Problema das árvores geradoras e árvores geradoras de custo mínimo (MST)</h3>
+<p>A árvore de um grafo G, é um subgrafo conexo sem ciclos. Uma <strong>árvore</strong> é <strong><em>geradora</em></strong>, se abrange todos os vértices do grafo original G. Como as árvores são conexas todo grafo não-dirigido que possui uma árvore geradora é conexo. E todo grafo conexo não-dirigido é dotado de ao menos uma <strong>árvore geradora</strong>. Toda árvore geradora de uma grafo não-dirigido com <strong><em>V</em></strong> vértices, tem exatamente <strong><em>V - 1</em></strong> arestas.</p>
+<p>Agora, uma <strong>árvore geradora <em>T</em></strong> é <strong><em>mínima</em></strong>, se nenhuma outra árvore geradora de <em>G</em> tem <strong>custo menor que <em>T</em></strong>, sendo o <em>custo</em> de <strong><em>T</em></strong>, a soma dos custos/pesos de suas arestas.  Árvores geradoras mínimas, também chamadas de MSTs (<em>minimum spanning tree</em>), existem, se e somente se, o grafo G é conexo.</p>
+<p><strong>Como encontrar a MST de um grafo <em>G</em>?</strong>   </p>
+<h4 id="4821-prim">4.8.2.1 Prim</h4>
+<p>O algoritmo de Prim, é um algoritmo para o problema de encontrar uma MST de um <em>grafo ponderado não-dirigido</em>. Os custos das arestas são números arbitrários (positivos e negativos) e só é possível encontrar a MST se o grafo é conexo. </p>
+<p>Dado um grafo G, ponderado, não-dirigido e conexo, O algoritmo cultiva uma árvore até que se torne geradora e, ao final, ela será uma MST.  </p>
+<p>O processo se dá apartir de uma árvore inicial <em>T</em>  que na primeira iteração será um único vértice(<strong>semente</strong>), que é escolhido arbitrariamente. </p>
+<p>Para prosseguir será necessário definir os conceitos de <strong>franja, fronteira, preço e gancho</strong>.
+- A <strong>franja</strong> de uma subárvore <em>T</em> é o conjunto de todas as arestas que ligam um vértice de <em>T</em> à algum outro vértice que está fora de <em>T</em>. 
+- A <strong>fronteira</strong> de <em>T</em> é o conjunto de vértices que não estão em <em>T</em>, porém são vizinhos aos vértices de <em>T</em>.
+- O <strong>preço</strong> de de um vértice <em>v</em> é o <strong>custo mínimo</strong> de uma aresta que incide em <em>v</em>
+- O <strong>gancho</strong> de um vértice <em>v</em>, é um vértice <em>w</em> que determina o <strong>preço</strong>(custo mínimo) de v, ou seja é o vertíce <em>w</em> de menor custo que se liga à um vértice <em>v</em>. </p>
+<p>Portanto, para uma subárvore <em>T</em> de um grafo não-dirigido conexo ponderado G, o algoritmo segue da seguinte forma:</p>
+<p><strong>Enquanto</strong> a franja de <em>T</em> não estiver vazia:
+1. Escolha um vértice <em>y</em> na <strong>fronteira</strong> de <em>T</em>;
+2. Seja <em>x</em> o gancho de <em>y</em>;
+3. Acrescente a aresta (x, y) e o vértice <em>y</em> a <em>T</em>;
+4. Atualize os preços e os ganchos fora de T.</p>
+<p>Para armazenar os <strong><em>preços</em></strong> podemos usar um vetor <code>preco[]</code> indexado pelos vértices, e para armazenar os <strong><em>pais</em></strong> e os <strong><em>ganchos</em></strong> podemos usar um vetor <code>pa[]</code>, onde, se <em>v</em> está em <em>T</em>, então <code>pa[v]</code> é o pai de <em>v</em>, se <em>v</em> está na fronteira de <em>T</em> então <code>pa[v]</code> é um gancho de <em>v</em>, ou seja se <em>v</em> está na <strong>fronteira</strong> de <em>T</em> <code>pa[v]</code> é um "pai provisório" de <em>v</em>, que pode ser alterado conforme o algoritmo progride. </p>
+<p>O <em>Prim</em> é um algoritmo <em>guloso</em> (greedy), portanto ele sempre vai consumir a aresta de <strong><em>menor custo</em></strong> da <strong><em>franja</em></strong>.</p>
+<p>A partir disso, podemos construir duas implementações eficientes do Algoritmo de Prim, uma primeira, eficiente para <strong>grafos densos</strong> que utiliza apenas os vetores como forma de controle, além de uma segunda mais eficiente para <strong>grafos esparsos</strong>, que utiliza de uma <strong>Fila de Prioridades(Heap)</strong> para armazenar os vértices fora <em>T</em> priorizados pelo <em>preço</em>.</p>
+<blockquote>
+<p>Obs: Assuma que os vetores já estão implementados de maneria global e que <code>dist[]</code> equivale a <code>preco[]</code>.</p>
+</blockquote>
+<ul>
+<li>Implementação 1:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Prim</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="o">*</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="c1">//Inicialização</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">v</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="n">pa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="c1">//Seta o próprio elemento como visitado e como pai</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="n">pa</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Edge</span><span class="w"> </span><span class="o">*</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">        </span><span class="n">pa</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">        </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">weight</span><span class="p">;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="k">for</span><span class="p">(;;)</span><span class="w"> </span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">;</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">w</span><span class="p">)</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min</span><span class="p">)</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">                </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">w</span><span class="p">],</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">;</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">min</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">)</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="w">        </span><span class="n">visited</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">Edge</span><span class="w"> </span><span class="o">*</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">edges</span><span class="p">[</span><span class="n">y</span><span class="p">];</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">weight</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">])</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="w">                </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">weight</span><span class="p">;</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="w">                </span><span class="n">pa</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Complexidade</strong>: O(V²) como o tamanho de grafos <strong>densos</strong> é proporcional a V² podemos dizer que a <em>Implementação 1</em> é <strong>linear</strong> para grafos <strong>densos</strong>.</p>
+<ul>
+<li>Implementação 2:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Prim</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="o">*</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="n">pa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="n">pa</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Edge</span><span class="w"> </span><span class="o">*</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="n">pa</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">weight</span><span class="p">;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="n">Heap</span><span class="w"> </span><span class="o">*</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PQInit</span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">);</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">v</span><span class="p">)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="n">PQInsert</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">);</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">PQEmpty</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PQPop</span><span class="p">(</span><span class="n">dist</span><span class="p">);</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">)</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">        </span><span class="n">visited</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">Edge</span><span class="w"> </span><span class="o">*</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">edges</span><span class="p">[</span><span class="n">y</span><span class="p">];</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">weight</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">])</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">                </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">weight</span><span class="p">;</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">                </span><span class="n">PQChange</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]);</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">                </span><span class="n">pa</span><span class="p">[</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">    </span><span class="n">PQFree</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="p">}</span>
+</code></pre></div>
+<p>A <em>implementação 2</em> utiliza uma [[README#^c7fb0b|Fila de Prioridades]] para armazenar os elementos de <strong>menor custo</strong>.</p>
+<p><strong>Complexidade</strong>: O(E log V), apenas um pouco pior que a linear, podemos chamar de <strong><em>linearítmica</em></strong>.</p>
+<blockquote>
+<p>Implementação 1 X Implementação 2</p>
+</blockquote>
+<p>Como dito anteriormente, se nos restringirmos a <strong>grafos esparsos</strong>, a <em>Imp2</em> é mais rápida que a <em>Imp1</em>, porém em <strong>grafos densos</strong>, a situação se inverte.</p>
+<h4 id="4822-kruskal">4.8.2.2 Kruskal</h4>
+<p>O <strong>algoritmo de Kruskal</strong> é um algoritmo que busca solucionar o mesmo problema que o algoritmo de Prim, construir a MST de um grafo não-dirigido e ponderado. Porém, aqui vêm a primeira diferença. O Prim era aplicável somente para <strong>grafos conexos</strong>, porém se aplicarmos o <strong>Kruskal</strong> para um grafo com <em>k</em> componentes conexas, obteremos <em>k</em> <em>MSTs</em> distintas, uma para cada componente conexa do grafo.</p>
+<p>O algoritmo de kruskal tem comportamento <em>guloso</em>(greedy), ele é baseado na lógica de <strong>Ordenação de Arestas</strong>. Cada iteração começa com uma <strong>floresta geradora <em>F</em></strong> de um grafo <em>G</em> que é incialmente vazia. Enquanto não existirem arestas externas, o algoritmo adiciona uma aresta <strong><em>α</em></strong>, de peso mínimo, a <em>F</em>, se e somente se, (1) <strong><em>α</em></strong> é uma aresta externa a <strong><em>F</em></strong> e (2) <strong><em>F + α</em></strong> continua sendo uma floresta, ou seja, a <strong>adição de <em>α</em> a <em>F</em> não gera ciclos</strong>. </p>
+<p>Ao final do procedimento a Floresta <strong><em>F</em></strong> será conexa desde que <strong><em>G</em></strong> seja conexo. Assim <strong><em>F</em></strong> será uma MST. </p>
+<p>O algoritmo tem um funcionamento bem simples, porém surge o seguinte problema: como saber se um vértice <em>v</em> já esta ligado a um vértice <em>w</em>? Afim de evitar ciclos. E assim, entra a <strong>UFDS (Union-Find-Disjoint-Set)</strong> Uma estrutura de dados otimizada que permite verificar e controlar a conectividade de componentes entre <strong><em>sets</em></strong>(conjuntos). </p>
+<p>A partir disso, podemos implementar o <strong>Algoritmo de Kruskal</strong> da seguinte forma:</p>
+<blockquote>
+<p>Obs: Assuma que a estrutura <strong>UFDS</strong> e suas respectivas funções já estão implementadas.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Kruskal</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="o">*</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">Edge</span><span class="w"> </span><span class="o">*</span><span class="n">edges</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numEdges</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="c1">//Ordenação do vetor de arestas, pode ser um quick ou um merge</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">mergesort</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">numEdges</span><span class="p">);</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="n">Edge</span><span class="w"> </span><span class="o">*</span><span class="n">choosenEdges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Edge</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lenChoosenEdges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="n">UFDS</span><span class="w"> </span><span class="o">*</span><span class="n">ufds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UFDSInit</span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">);</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numEdges</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">lenChoosenEdges</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">g</span><span class="o">-&gt;</span><span class="n">numVertex</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">v</span><span class="p">;</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">w</span><span class="p">;</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">UFDS_SameSet</span><span class="p">(</span><span class="n">ufds</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">))</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">            </span><span class="n">choosenEdges</span><span class="p">[</span><span class="n">lenChoosenEdges</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">Union</span><span class="p">(</span><span class="n">ufds</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">);</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="n">UFDS_Destroy</span><span class="p">(</span><span class="n">ufds</span><span class="p">);</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">choosenEdges</span><span class="p">;</span><span class="w"> </span><span class="c1">//Floresta F</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Complexidade</strong>: O(E log E).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../FiladePrioridades/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Fila de Prioridades">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Fila de Prioridades
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Quickselect/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Quickselect">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Quickselect
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.af256bd8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
