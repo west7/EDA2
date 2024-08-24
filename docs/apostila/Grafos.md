@@ -13,7 +13,6 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
 
 - Imagine o seguinte grafo:
 
-<div align="center">
 	
 ```mermaid
     graph LR;
@@ -25,8 +24,6 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
     classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4 myNodeStyle;
 ```
-
-</div>
 
 - Sua respectiva matriz de adjacência poderia ser representada da seguinte maneira:
 
