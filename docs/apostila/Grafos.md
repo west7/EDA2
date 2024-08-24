@@ -14,6 +14,7 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
 - Imagine o seguinte grafo:
 
 <div align="center">
+	
 ```mermaid
     graph LR;
     0 --- 1 & 2
@@ -24,6 +25,7 @@ Uma matriz bidimensional que representa a relação entre os vértices. Os eleme
     classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4 myNodeStyle;
 ```
+
 </div>
 
 - Sua respectiva matriz de adjacência poderia ser representada da seguinte maneira:
@@ -86,6 +88,7 @@ Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta 
     classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4 myNodeStyle;
 ```
+
 </div>
 
 - Note que todos os vértices tem ligação entre si, tornando o grafo acima completo. Com um **total de 4 vértices**, têm-se um **total de 4*3/2** arestas, ou **6 arestas**.
@@ -95,6 +98,7 @@ Todos os vértices são ligados entre si, ou seja, todo vértice tem uma aresta 
 São grafos nos quais as arestas possuem direção, ou seja, se tenho uma aresta de '0' para '1', não necessariamente tenho uma aresta de '1' para '0'.
 
 <div align="center">
+	
 ```mermaid
     graph LR;
     4 --> 0 & 1
@@ -165,7 +169,9 @@ Exemplo:
 - **Grafo não Conexo** - Um grafo que não é conexo consiste em um conjunto de outros componentes conexos.
 
 Exemplo:
+
 <div align="center">
+	
 ```mermaid
     graph LR;
     0 --- 1
@@ -176,6 +182,7 @@ Exemplo:
     classDef myNodeStyle stroke-width: 1px, rx: 10px, ry: 10px;
     class 0,1,2,3,4,5 myNodeStyle;
 ```
+
 </div>
 
 ### 4.4.4 Grafos dirigidos conexos acíclicos
@@ -261,6 +268,7 @@ Como implementar peso nas arestas?
 ## 4.5 Structs e algoritmos iniciais
 
 A estrutura básica para representar um grafo é a **Aresta(Edge)**, que simboliza a conexão entre dois **Vértices(Vertex)**, que podem ser abstraídos para um **Item** em questão, que pode ser um `int`, `char` ou qualquer `tipo abstrato` que for definido.
+
 ```C 
     typedef struct Edge{
         int v; 
